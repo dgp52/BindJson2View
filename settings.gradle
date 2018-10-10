@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':bindjson2viewlib'
