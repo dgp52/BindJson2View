@@ -11,7 +11,7 @@ public class BindJson2View {
     private Context context;
     private String fileName, url, jsonString;
 
-    public BindJson2View(Context context) {
+    private BindJson2View(Context context) {
         this.context = context;
     }
 
