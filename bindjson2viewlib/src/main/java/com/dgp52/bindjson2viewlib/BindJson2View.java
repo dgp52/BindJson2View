@@ -3,13 +3,17 @@ package com.dgp52.bindjson2viewlib;
 import android.content.Context;
 
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
+import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class BindJson2View {
 
     private static BindJson2View instance;
 
     private Context context;
-    private String fileName, url, jsonString;
+    private final String FILE_NAME = "bindjson2view";
 
     private BindJson2View(Context context) {
         this.context = context;
@@ -27,29 +31,13 @@ public class BindJson2View {
         return instance;
     }
 
-    public BindJson2View fileName(String fileName){
-        if(fileName!=null) {
-            this.fileName = fileName;
-        } else {
-            this.fileName = "bindjson2view";
+    public URlWrapper useNetwork(String url_str) {
+        URL url = null;
+        try {
+            url = new URL(url_str!=null?url_str.trim():"");
+        } catch (MalformedURLException e) {
+            ServiceException.logE(e);
         }
-        ServiceException.logI("Filename added " + fileName);
-        return this;
-    }
-
-    public BindJson2View url(String url) {
-        if(url!=null) {
-            this.url = url;
-            ServiceException.logI("URL added");
-        }
-        return this;
-    }
-
-    public BindJson2View jsonString(String jsonString) {
-        if(jsonString!=null) {
-            this.jsonString = jsonString;
-            ServiceException.logI("JsonString added");
-        }
-        return this;
+        return new URlWrapper(url);
     }
 }
