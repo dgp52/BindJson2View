@@ -34,7 +34,7 @@ public class BindJson2View {
     public URlWrapper useNetwork(String url_str) {
         URL url = null;
         try {
-            url = new URL(url_str!=null?url_str.trim():"");
+            url = new URL(url_str);
         } catch (MalformedURLException e) {
             ServiceException.logE(e);
         }
