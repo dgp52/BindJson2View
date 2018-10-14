@@ -40,8 +40,10 @@ public class NetworkDownloader {
                     ServiceException.logE(e);
                 }
             }
-            if(stringBuffer!=null)
+            if(stringBuffer!=null) {
+                ServiceException.logI("Content successfully downloaded");
                 onDownloadFinish.onDownloadFinish(stringBuffer.toString());
+            }
         }
         return null;
     }
