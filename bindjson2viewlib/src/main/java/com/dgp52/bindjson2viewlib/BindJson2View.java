@@ -13,7 +13,6 @@ public class BindJson2View {
     private static BindJson2View instance;
 
     private Context context;
-    private final String FILE_NAME = "bindjson2view";
 
     private BindJson2View(Context context) {
         this.context = context;
@@ -38,6 +37,6 @@ public class BindJson2View {
         } catch (MalformedURLException e) {
             ServiceException.logE(e);
         }
-        return new URlWrapper(url);
+        return new URlWrapper(url,context);
     }
 }
