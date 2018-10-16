@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void test() {
-        BindJson2View.getInstance(getApplicationContext()).useNetwork("https://www.google.com").start();
+        BindJson2View.getInstance(getApplicationContext())
+                .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
+                .start();
     }
 
     public void log(View view) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -53,6 +54,28 @@ public class FileManager {
         } else {
             ServiceException.logI("File doesn't exist " + fileName);
             return false;
+        }
+    }
+
+    public static String readContent(String fileName, Context context) {
+        if(fileExist(fileName,context)) {
+            FileInputStream fileInputStream = null;
+            String content = "";
+            try {
+                fileInputStream = context.openFileInput(fileName);
+                int d;
+                while((d = fileInputStream.read())!= -1){
+                    content = content + Character.toString((char)d);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return content;
+        } else {
+            ServiceException.logI("File doesn't exist " + fileName);
+            return "";
         }
     }
 }
