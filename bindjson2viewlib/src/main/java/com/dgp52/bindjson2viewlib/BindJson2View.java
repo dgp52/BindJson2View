@@ -13,6 +13,7 @@ public class BindJson2View {
     private static BindJson2View instance;
 
     private Context context;
+    private static String jsonString = null;
 
     private BindJson2View(Context context) {
         this.context = context;
@@ -38,5 +39,13 @@ public class BindJson2View {
             ServiceException.logE(e);
         }
         return new URlWrapper(url,context);
+    }
+
+    public static String getJsonString() {
+        return jsonString;
+    }
+
+    public static void setJsonString(String jsonString) {
+        jsonString = jsonString;
     }
 }

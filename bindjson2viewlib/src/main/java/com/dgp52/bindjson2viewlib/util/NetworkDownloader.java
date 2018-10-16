@@ -11,10 +11,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.Callable;
 
 public class NetworkDownloader {
 
-    public static Void tryDownload(URL url, OnDownloadFinish onDownloadFinish) {
+    public static String tryDownload(URL url) {
         HttpURLConnection httpURLConnection = null;
         BufferedReader bufferedReader = null;
         StringBuffer stringBuffer = null;
@@ -42,7 +43,7 @@ public class NetworkDownloader {
             }
             if(stringBuffer!=null) {
                 ServiceException.logI("Content successfully downloaded");
-                onDownloadFinish.onDownloadFinish(stringBuffer.toString());
+                return stringBuffer.toString();
             }
         }
         return null;
