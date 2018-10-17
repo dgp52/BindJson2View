@@ -1,6 +1,7 @@
 package com.dgp52.bindjson2viewlib;
 
 import android.content.Context;
+import android.view.View;
 
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;
@@ -11,10 +12,7 @@ import java.net.URL;
 public class BindJson2View {
 
     private static BindJson2View instance;
-
     private Context context;
-    private static String jsonString = null;
-
     private BindJson2View(Context context) {
         this.context = context;
     }
@@ -41,11 +39,16 @@ public class BindJson2View {
         return new URlWrapper(url,context);
     }
 
-    public static String getJsonString() {
-        return jsonString;
+    public void addView(View view, String tag) {
+        if(view!=null) {
+            view.setTag(tag);
+            addView(view);
+        }
     }
 
-    public static void setJsonString(String jsonString) {
-        jsonString = jsonString;
+    public void addView(View view) {
+        if(view!=null && (view.getTag() instanceof String)){
+
+        }
     }
 }

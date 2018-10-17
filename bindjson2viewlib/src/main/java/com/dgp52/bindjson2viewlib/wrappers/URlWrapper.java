@@ -2,7 +2,6 @@ package com.dgp52.bindjson2viewlib.wrappers;
 
 import android.content.Context;
 
-import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.util.FileManager;
 import com.dgp52.bindjson2viewlib.util.NetworkDownloader;
 
@@ -23,7 +22,6 @@ public class URlWrapper {
             if(url!=null) {
                 FileManager.createFile(FILE_NAME,context);
                 FileManager.writeContent(NetworkDownloader.tryDownload(url),FILE_NAME,context);
-                ServiceException.logI(FileManager.readContent(FILE_NAME,context));
             }
         }).start();
     }

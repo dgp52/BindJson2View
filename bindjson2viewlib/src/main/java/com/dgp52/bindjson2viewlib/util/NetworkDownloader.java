@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.Callable;
 
-public class NetworkDownloader {
+public final class NetworkDownloader {
 
     public static String tryDownload(URL url) {
         HttpURLConnection httpURLConnection = null;

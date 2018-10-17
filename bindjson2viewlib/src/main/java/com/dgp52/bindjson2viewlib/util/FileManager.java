@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileManager {
+public final class FileManager {
 
     public static boolean fileExist(String fileName, Context context) {
         File file = context.getFileStreamPath(fileName);
@@ -25,9 +25,7 @@ public class FileManager {
                 fileOutputStream = context.openFileOutput(fileName, context.MODE_PRIVATE);
                 fileOutputStream.close();
                 ServiceException.logI("File successfully created " + fileName);
-            } catch (FileNotFoundException e) {
-                ServiceException.logE(e);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 ServiceException.logE(e);
             }
             return true;
@@ -47,7 +45,7 @@ public class FileManager {
                 writer.flush();
                 writer.close();
                 ServiceException.logI("JSON string successfully written to file " + fileName);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 ServiceException.logE(e);
             }
             return true;
@@ -67,9 +65,7 @@ public class FileManager {
                 while((d = fileInputStream.read())!= -1){
                     content = content + Character.toString((char)d);
                 }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return content;
