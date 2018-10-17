@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.dgp52.bindjson2viewlib.BindJson2View;
 import com.dgp52.bindjson2viewlib.logexception.LogException;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
+import com.dgp52.bindjson2viewlib.util.AttributeProcessor;
 import com.dgp52.bindjson2viewlib.util.FileManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void test() {
-//        BindJson2View.getInstance(getApplicationContext())
-//                .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
-//                .start();
-        BindJson2View.getInstance(getApplicationContext()).addView(textView, "textView1");
+        BindJson2View.getInstance(getApplicationContext())
+                .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
+                .start();
+        AttributeProcessor.addAttribute(textView);
     }
 
     public void log(View view) {

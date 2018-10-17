@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
+import com.dgp52.bindjson2viewlib.util.AttributeProcessor;
 import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;
 
 import java.net.MalformedURLException;
@@ -48,7 +49,7 @@ public class BindJson2View {
 
     public void addView(View view) {
         if(view!=null && (view.getTag() instanceof String)){
-
+            AttributeProcessor.addAttribute(view);
         }
     }
 }

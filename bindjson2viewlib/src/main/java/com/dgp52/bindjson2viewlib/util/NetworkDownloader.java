@@ -1,5 +1,7 @@
 package com.dgp52.bindjson2viewlib.util;
 
+import android.util.Log;
+
 import com.dgp52.bindjson2viewlib.interfaces.OnDownloadFinish;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 
@@ -43,6 +45,12 @@ public final class NetworkDownloader {
             }
             if(stringBuffer!=null) {
                 ServiceException.logI("Content successfully downloaded");
+                try {
+                    Log.i("log-cat", "Before Sleep");
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 return stringBuffer.toString();
             }
         }
