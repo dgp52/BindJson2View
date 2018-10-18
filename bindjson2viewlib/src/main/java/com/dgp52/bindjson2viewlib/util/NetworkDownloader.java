@@ -1,19 +1,12 @@
 package com.dgp52.bindjson2viewlib.util;
 
-import android.util.Log;
-
-import com.dgp52.bindjson2viewlib.interfaces.OnDownloadFinish;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.Callable;
 
 public final class NetworkDownloader {
 
@@ -45,12 +38,6 @@ public final class NetworkDownloader {
             }
             if(stringBuffer!=null) {
                 ServiceException.logI("Content successfully downloaded");
-                try {
-                    Log.i("log-cat", "Before Sleep");
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 return stringBuffer.toString();
             }
         }

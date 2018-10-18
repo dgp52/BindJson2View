@@ -3,6 +3,7 @@ package com.dgp52.bindjson2view;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.dgp52.bindjson2viewlib.BindJson2View;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
                 .start();
         AttributeProcessor.addAttribute(textView);
+        AttributeProcessor.addAttribute(new Button(getApplicationContext()),"mybtn");
     }
 
     public void log(View view) {

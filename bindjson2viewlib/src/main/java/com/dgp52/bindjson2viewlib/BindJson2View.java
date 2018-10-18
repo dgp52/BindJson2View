@@ -39,17 +39,4 @@ public class BindJson2View {
         }
         return new URlWrapper(url,context);
     }
-
-    public void addView(View view, String tag) {
-        if(view!=null) {
-            view.setTag(tag);
-            addView(view);
-        }
-    }
-
-    public void addView(View view) {
-        if(view!=null && (view.getTag() instanceof String)){
-            AttributeProcessor.addAttribute(view);
-        }
-    }
 }
