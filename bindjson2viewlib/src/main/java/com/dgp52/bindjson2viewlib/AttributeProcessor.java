@@ -2,16 +2,10 @@ package com.dgp52.bindjson2viewlib;
 
 import android.view.View;
 
-import com.dgp52.bindjson2viewlib.BindJson2View;
 import com.dgp52.bindjson2viewlib.Thread.CustomThreadPoolExecutor;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
-import com.dgp52.bindjson2viewlib.util.FileManager;
-import com.dgp52.bindjson2viewlib.util.Keyword;
 import com.dgp52.bindjson2viewlib.wrappers.LockWrapper;
 
-import org.json.JSONArray;
-
-import java.io.File;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
