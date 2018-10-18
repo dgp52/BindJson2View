@@ -1,10 +1,8 @@
 package com.dgp52.bindjson2viewlib;
 
 import android.content.Context;
-import android.view.View;
 
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
-import com.dgp52.bindjson2viewlib.util.AttributeProcessor;
 import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;
 
 import java.net.MalformedURLException;

@@ -9,8 +9,7 @@ import android.widget.TextView;
 import com.dgp52.bindjson2viewlib.BindJson2View;
 import com.dgp52.bindjson2viewlib.logexception.LogException;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
-import com.dgp52.bindjson2viewlib.util.AttributeProcessor;
-import com.dgp52.bindjson2viewlib.util.FileManager;
+import com.dgp52.bindjson2viewlib.AttributeProcessor;
 
 public class MainActivity extends AppCompatActivity {
 
