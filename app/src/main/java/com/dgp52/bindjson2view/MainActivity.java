@@ -14,21 +14,25 @@ import com.dgp52.bindjson2viewlib.AttributeProcessor;
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
+        button = findViewById(R.id.button2);
+        button.setBackgroundColor();
         test();
     }
 
     private void test() {
+        AttributeProcessor.addAttribute(button);
+
         BindJson2View.getInstance(getApplicationContext())
                 .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
                 .start();
-        AttributeProcessor.addAttribute(textView);
-        AttributeProcessor.addAttribute(new Button(getApplicationContext()),"mybtn");
+        //AttributeProcessor.addAttribute(new Button(getApplicationContext()),"mybtn");
     }
 
     public void log(View view) {

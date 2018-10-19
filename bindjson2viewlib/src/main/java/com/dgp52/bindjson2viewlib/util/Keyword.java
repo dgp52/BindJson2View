@@ -7,5 +7,6 @@ public final class Keyword {
     public static final String METHOD = "method";
     public static final String SET = "set";
     public static final String TYPE = "type";
+    public static final String VALUE = "value";
     public static final String FILE_NAME = "bindjson2view_jsonfile";
 }
