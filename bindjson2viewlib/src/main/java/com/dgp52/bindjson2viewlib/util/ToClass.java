@@ -1,15 +1,20 @@
 package com.dgp52.bindjson2viewlib.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public final class ToClass {
 
+    private static Map<String,Class> mapClass;
+    static {
+        mapClass = new HashMap<>();
+        mapClass.put("charsequence",CharSequence.class);
+        mapClass.put("bool",boolean.class);
+        mapClass.put("int",int.class);
+    }
+
+
     public static Class toClass (String className) {
-        if(className.toLowerCase().equals("charsequence")) {
-            return  CharSequence.class;
-        } else if (className.toLowerCase().equals("bool")) {
-            return boolean.class;
-        } else if (className.toLowerCase().equals("int")) {
-            return int.class;
-        }
-        return null;
+        return mapClass.get(className);
     }
 }
