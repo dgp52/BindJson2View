@@ -1,4 +1,4 @@
-package com.dgp52.bindjson2viewlib.util;
+package com.dgp52.bindjson2viewlib.converters;
 
 import android.graphics.Color;
 

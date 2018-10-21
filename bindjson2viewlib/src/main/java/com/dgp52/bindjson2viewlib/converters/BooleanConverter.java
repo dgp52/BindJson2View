@@ -1,8 +1,8 @@
-package com.dgp52.bindjson2viewlib.util;
+package com.dgp52.bindjson2viewlib.converters;
 
 import com.dgp52.bindjson2viewlib.interfaces.Convert;
 
-public final class BooleanConverter implements Convert{
+public class BooleanConverter implements Convert{
 
     @Override
     public Object convert(String value) {

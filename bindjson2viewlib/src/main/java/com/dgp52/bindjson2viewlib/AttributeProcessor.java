@@ -4,7 +4,7 @@ import android.os.Looper;
 import android.os.Handler;
 import android.view.View;
 
-import com.dgp52.bindjson2viewlib.Thread.CustomThreadPoolExecutor;
+import com.dgp52.bindjson2viewlib.thread.CustomThreadPoolExecutor;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 import com.dgp52.bindjson2viewlib.util.ToClass;
@@ -68,7 +68,7 @@ public final class AttributeProcessor {
                                 }
                             });
                         } catch(Exception e) {
-                            ServiceException.logE(e);
+                            ServiceException.logE(method.getString(Keyword.METHOD) + " - " + method.getString(Keyword.TYPE),e);
                         }
                     }
                 }

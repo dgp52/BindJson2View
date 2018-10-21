@@ -1,4 +1,4 @@
-package com.dgp52.bindjson2viewlib.Thread;
+package com.dgp52.bindjson2viewlib.thread;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
