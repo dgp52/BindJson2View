@@ -8,7 +8,6 @@ public final class ToClass {
     private static Map<String,Class> mapClass;
     static {
         mapClass = new HashMap<>();
-        mapClass.put("charsequence",CharSequence.class);
         mapClass.put("bool",boolean.class);
         mapClass.put("int",int.class);
     }
