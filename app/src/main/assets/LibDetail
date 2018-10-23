@@ -1,0 +1,7 @@
+1. "tags":["log","my btn"] - Able to add multiple tags.
+2. Multiple Attributes can be applied to multiple tags.
+3. "value":"true" Value should always be defined as a string.
+4. Method and Type should always match java signature.
+3. The only way to represent Color is using # in front of hex color value, i.e. "value":"#FFFFFF"
+4. The only way to set Width and Height is either using int or percentage, i.e. "value":"200" or "value":"20%".
+Note: Percentage takes the absolute width and the height of the device. It does not take any account for titlebar or actionbar.

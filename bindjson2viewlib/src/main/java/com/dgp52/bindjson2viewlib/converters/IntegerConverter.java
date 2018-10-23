@@ -22,7 +22,6 @@ public class IntegerConverter implements Convert {
         return Integer.parseInt(value);
     }
 
-    //Percentage - setWidth and setHeight will only work if the view has wrap_content ? look into this more
     private int percentageToPixel(String value, Method method){
         int absoluteSize = method.getName().equals(Keyword.SETHEIGHT)?BindJson2View.getDisplayMetrics().heightPixels:BindJson2View.getDisplayMetrics().widthPixels;
         return (int) ((Integer.parseInt(value.substring(0, value.length() - 1))/100.0f)*absoluteSize);
