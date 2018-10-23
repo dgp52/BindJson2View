@@ -10,6 +10,7 @@ import com.dgp52.bindjson2viewlib.converters.ShortConverter;
 import com.dgp52.bindjson2viewlib.converters.StringConverter;
 import com.dgp52.bindjson2viewlib.interfaces.Convert;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public final class ToObject {
         mapObjects.put(String.class, new StringConverter());
     }
 
-    public static Object toObject(Class c, String value) {
-        return mapObjects.get(c).convert(value);
+    public static Object toObject(Class c, String value, Method method) {
+        return mapObjects.get(c).convert(value, method);
     }
 }

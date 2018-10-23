@@ -23,4 +23,6 @@ public final class Keyword {
     public static final String CHARSEQUENCE = "CharSequence";
     public static final String STRING = "String";
 
+    //Method name
+    public static final String SETHEIGHT = "setHeight";
 }

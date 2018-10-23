@@ -61,7 +61,7 @@ public final class AttributeProcessor {
                             String value = method.getString(Keyword.VALUE);
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
-                                    reflectedMethod.invoke(view, ToObject.toObject(reflectedClass, value));
+                                    reflectedMethod.invoke(view, ToObject.toObject(reflectedClass, value, reflectedMethod));
                                     ServiceException.logI(reflectedMethod.getName()+" invoked on "+view.getTag());
                                 } catch (Exception e) {
                                     ServiceException.logE(e);
