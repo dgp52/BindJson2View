@@ -25,4 +25,5 @@ public final class Keyword {
 
     //Method name
     public static final String SETHEIGHT = "setHeight";
+    public static final String SETWidth = "setWidth";
 }

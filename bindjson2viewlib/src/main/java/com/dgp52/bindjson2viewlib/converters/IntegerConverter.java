@@ -9,6 +9,7 @@ import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
 import java.lang.reflect.Method;
+import java.security.Key;
 import java.util.Map;
 
 public class IntegerConverter implements Convert {
@@ -19,11 +20,16 @@ public class IntegerConverter implements Convert {
             return Color.parseColor(value);
         if(value.endsWith("%"))
             return percentageToPixel(value,method);
+        if(value.endsWith("px"))
+            return Integer.parseInt(value.substring(0,value.length()-2));
         return Integer.parseInt(value);
     }
 
     private int percentageToPixel(String value, Method method){
-        int absoluteSize = method.getName().equals(Keyword.SETHEIGHT)?BindJson2View.getDisplayMetrics().heightPixels:BindJson2View.getDisplayMetrics().widthPixels;
-        return (int) ((Integer.parseInt(value.substring(0, value.length() - 1))/100.0f)*absoluteSize);
+        if(method.getName().equals(Keyword.SETHEIGHT) || method.getName().equals(Keyword.SETWidth)) {
+            int absoluteSize = method.getName().equals(Keyword.SETHEIGHT)?BindJson2View.getDisplayMetrics().heightPixels:BindJson2View.getDisplayMetrics().widthPixels;
+            return (int) ((Integer.parseInt(value.substring(0, value.length() - 1))/100.0f)*absoluteSize);
+        }
+        return 0;
     }
 }

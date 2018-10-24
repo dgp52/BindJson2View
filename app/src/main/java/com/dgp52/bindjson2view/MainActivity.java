@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dgp52.bindjson2viewlib.BindJson2View;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button2);
         test();
     }
+
 
     private void test() {
         AttributeProcessor.addAttribute(button);
