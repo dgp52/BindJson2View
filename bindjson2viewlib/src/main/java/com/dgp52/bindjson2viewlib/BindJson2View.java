@@ -2,6 +2,7 @@ package com.dgp52.bindjson2viewlib;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.util.DisplayMetrics;
 
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
@@ -15,6 +16,7 @@ public class BindJson2View {
     private static BindJson2View instance;
     private Context context;
     private static DisplayMetrics displayMetrics;
+    private static AssetManager assetManager;
 
     private BindJson2View(Context context) {
         this.context = context;
@@ -26,6 +28,7 @@ public class BindJson2View {
                 if(instance==null) {
                     instance = new BindJson2View(context);
                     displayMetrics = context.getResources().getDisplayMetrics();
+                    assetManager = context.getAssets();
                     ServiceException.logI("BindJson2View instantiated");
                 }
             }
@@ -45,5 +48,9 @@ public class BindJson2View {
 
     public static DisplayMetrics getDisplayMetrics(){
         return displayMetrics;
+    }
+
+    public static AssetManager getAssetManager() {
+        return assetManager;
     }
 }

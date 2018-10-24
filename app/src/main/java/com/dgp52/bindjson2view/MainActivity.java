@@ -12,6 +12,8 @@ import com.dgp52.bindjson2viewlib.logexception.LogException;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.AttributeProcessor;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         button = findViewById(R.id.button2);
         test();
+        int id = getApplicationContext().getResources().getIdentifier("ic_launcher_round","mipmap","com.dgp52.bindjson2view");
+        button.setBackgroundResource(id);
     }
 
 
