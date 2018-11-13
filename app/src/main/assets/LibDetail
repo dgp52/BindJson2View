@@ -7,3 +7,17 @@
 Note: Percentage takes the absolute width and the height of the device. It does not take any account for titlebar or actionbar.
 
 Json example file - https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0
+
+ {
+    "method":"setBackgroundResource",
+    "params":"[int]",
+    "values": "[value]",
+    "parser":"Resource",
+    "extra":["ic_launcher_round", "mipmap", "com.dgp52.bindjson2view"]
+  }
+
+  params = should be able to handle multiple parameters.
+  value = should be able to handle multiple values. Params and values should be in correct order.
+  parser = user will be provided with different parsers. It should be able to convert string values into method specific values.
+  extra = any extra values can be passed here to the method. Parser can use extra info to evaluate the string values into method specific values.
+  
