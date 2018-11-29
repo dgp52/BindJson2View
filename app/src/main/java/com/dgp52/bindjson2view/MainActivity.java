@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         test();
         int id = getApplicationContext().getResources().getIdentifier("ic_launcher_round","mipmap","com.dgp52.bindjson2view");
         button.setBackgroundResource(id);
+       button.setText("test");
     }
 
 

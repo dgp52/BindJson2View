@@ -2,14 +2,15 @@ package com.dgp52.bindjson2viewlib;
 
 import android.os.Looper;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.dgp52.bindjson2viewlib.thread.CustomThreadPoolExecutor;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.util.Keyword;
-import com.dgp52.bindjson2viewlib.util.ToClass;
-import com.dgp52.bindjson2viewlib.util.ToObject;
+import com.dgp52.bindjson2viewlib.mappers.ToClass;
 import com.dgp52.bindjson2viewlib.wrappers.LockWrapper;
+import com.dgp52.bindjson2viewlib.wrappers.ValueWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,21 +55,21 @@ public final class AttributeProcessor {
                 }
                 if(attributes!=null){
                     for(int i=0;i<attributes.length();i++){
-                        JSONObject method = attributes.getJSONObject(i);
+                        JSONObject attr = attributes.getJSONObject(i);
                         try{
-                            Class reflectedClass = ToClass.toClass(method.getString(Keyword.TYPE));
-                            Method reflectedMethod = view.getClass().getMethod(method.getString(Keyword.METHOD).startsWith(Keyword.SET) ? method.getString(Keyword.METHOD) : Keyword.SET+method.getString(Keyword.METHOD), reflectedClass);
-                            String value = method.getString(Keyword.VALUE);
+                            Class<?>[] reflectedClasses = ToClass.toClasses(attr.getJSONArray(Keyword.PARAMS));
+                            Method reflectedMethod = view.getClass().getMethod(attr.getString(Keyword.METHOD), reflectedClasses);
+                            Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),attr.getJSONArray(Keyword.CONVERTS));
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
-                                    reflectedMethod.invoke(view, ToObject.toObject(reflectedClass, value, reflectedMethod));
+                                    reflectedMethod.invoke(view, obj);
                                     ServiceException.logI(reflectedMethod.getName()+" invoked on "+view.getTag());
                                 } catch (Exception e) {
                                     ServiceException.logE(e);
                                 }
                             });
                         } catch(Exception e) {
-                            ServiceException.logE(method.getString(Keyword.METHOD) + " - " + method.getString(Keyword.TYPE),e);
+                            ServiceException.logE(attr.getString(Keyword.METHOD) + " - " + attr.getJSONArray(Keyword.PARAMS).toString(),e);
                         }
                     }
                 }
