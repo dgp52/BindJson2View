@@ -12,10 +12,6 @@ public class IntegerConverter implements SingleConvert {
 
     @Override
     public Object convert(String value) {
-        if(value.endsWith("%"))
-            return percentageToPixel(value);
-        if(value.endsWith("px"))
-            return Integer.parseInt(value.substring(0,value.length()-2));
         return Integer.parseInt(value);
     }
 
