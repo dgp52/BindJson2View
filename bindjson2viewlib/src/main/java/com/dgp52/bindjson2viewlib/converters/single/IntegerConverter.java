@@ -12,8 +12,6 @@ public class IntegerConverter implements SingleConvert {
 
     @Override
     public Object convert(String value) {
-        if(value.startsWith("#"))
-            return Color.parseColor(value);
         if(value.endsWith("%"))
             return percentageToPixel(value);
         if(value.endsWith("px"))

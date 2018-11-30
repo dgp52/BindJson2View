@@ -1,6 +1,13 @@
 package com.dgp52.bindjson2viewlib.util;
 
 public final class Keyword {
+    //App
+    public static final String FILE_NAME = "bindjson2view_jsonfile";
+
+    //Method name
+    public static final String SETHEIGHT = "setHeight";
+    public static final String SETWidth = "setWidth";
+
     //Attribute Processor
     public static final String VIEWS = "views";
     public static final String TAGS = "tags";
@@ -9,11 +16,6 @@ public final class Keyword {
     public static final String CONVERTS = "converts";
     public static final String PARAMS = "params";
     public static final String VALUES = "values";
-    public static final String FILE_NAME = "bindjson2view_jsonfile";
-
-    //Method name
-    public static final String SETHEIGHT = "setHeight";
-    public static final String SETWidth = "setWidth";
 
     //Method parameter types
     public static final String PRIMITIVE_BOOLEAN = "boolean";
