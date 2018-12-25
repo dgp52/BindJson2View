@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.ProviderInfo;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -15,7 +16,10 @@ import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class BindJson2View {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+public final class BindJson2View extends ContentProvider {
 
     private static BindJson2View instance;
     private Context context;
@@ -23,6 +27,10 @@ public class BindJson2View {
 
     private BindJson2View(Context context) {
         this.context = context;
+    }
+
+    public BindJson2View(){
+
     }
 
     public static BindJson2View getInstance (Context context) {
@@ -52,4 +60,43 @@ public class BindJson2View {
         return displayMetrics;
     }
 
+    @Override
+    public boolean onCreate() {
+        Context context = getContext();
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public String getType(@NonNull Uri uri) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        return null;
+    }
+
+    @Override
+    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+        return 0;
+    }
+
+    @Override
+    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+        return 0;
+    }
+
+    @Override
+    public void attachInfo(Context context, ProviderInfo info){
+        Context c = context;
+        ProviderInfo p = info;
+    }
 }
