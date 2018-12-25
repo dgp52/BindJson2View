@@ -1,18 +1,15 @@
 package com.dgp52.bindjson2view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dgp52.bindjson2viewlib.BindJson2View;
 import com.dgp52.bindjson2viewlib.logexception.LogException;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.AttributeProcessor;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
