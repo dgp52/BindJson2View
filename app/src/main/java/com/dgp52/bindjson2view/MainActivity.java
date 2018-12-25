@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
         button = findViewById(R.id.button2);
-        test();
-        //int id = getApplicationContext().getResources().getIdentifier("ic_launcher_round","mipmap","com.dgp52.bindjson2view");
-        //button.setBackgroundResource(id);
+        //test();
+        int id = getApplicationContext().getResources().getIdentifier("ic_launcher_round","mipmap","com.dgp52.bindjson2view");
+        button.setBackgroundResource(id);
+
     }
 
 
