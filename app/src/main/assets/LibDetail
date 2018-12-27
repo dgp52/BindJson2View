@@ -28,3 +28,31 @@ Json example file - https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document
   value = should be able to handle multiple values. Params and values should be in correct order.
   parser = user will be provided with different parsers. It should be able to convert string values into method specific values.
   extra = any extra values can be passed here to the method. Parser can use extra info to evaluate the string values into method specific values.
+
+
+How to Import this lib ?
+Step 1. Add the JitPack repository to your build file
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+Step 2. In build.gradle : app module add
+android {
+...
+compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+and add dependency
+dependencies {
+    ...
+    implementation 'com.github.dgp52:BindJson2View:628678f7bc'
+    ...
+}
+
+Step 3. Migrate Android Project to AndroidX

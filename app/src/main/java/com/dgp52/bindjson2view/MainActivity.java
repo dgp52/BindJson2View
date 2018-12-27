@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
         button = findViewById(R.id.button2);
-        //test();
-        int id = getApplicationContext().getResources().getIdentifier("ic_launcher_round","mipmap","com.dgp52.bindjson2view");
-        button.setBackgroundResource(id);
+        test();
+        //int id = getApplicationContext().getResources().getIdentifier("ic_launcher_round","mipmap","com.dgp52.bindjson2view");
+        //button.setBackgroundResource(id);
 
     }
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private void test() {
         AttributeProcessor.addAttribute(button);
 
-        BindJson2View.getInstance(getApplicationContext())
+        BindJson2View.getInstance()
                 .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
                 .start();
         //AttributeProcessor.addAttribute(new Button(getApplicationContext()),"mybtn");
