@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 public final class BindJson2View {
 
     private static BindJson2View instance;
-    private static DisplayMetrics displayMetrics;
 
     @NonNull
     public static BindJson2View getInstance () {
@@ -22,7 +21,6 @@ public final class BindJson2View {
             synchronized (BindJson2View.class) {
                 if(instance==null) {
                     instance = new BindJson2View();
-                    displayMetrics = GlobalApplication.getAppContext().getResources().getDisplayMetrics();
                     ServiceException.logI("BindJson2View instantiated");
                 }
             }
@@ -41,7 +39,4 @@ public final class BindJson2View {
         return new URlWrapper(url,GlobalApplication.getAppContext());
     }
 
-    public static DisplayMetrics getDisplayMetrics(){
-        return displayMetrics;
-    }
 }
