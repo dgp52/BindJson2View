@@ -1,5 +1,5 @@
 package com.dgp52.bindjson2viewlib.interfaces;
 
 public interface SingleConvert {
-    Object convert(String value);
+    Object convert(String value) throws Exception;
 }

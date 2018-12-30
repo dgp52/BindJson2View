@@ -22,8 +22,8 @@ public final class Keyword {
     public static final String PRIMITIVE_LONG = "long";
     public static final String PRIMITIVE_FLOAT = "float";
     public static final String PRIMITIVE_DOUBLE = "double";
-    public static final String CHARSEQUENCE = "CharSequence";
-    public static final String STRING = "String";
+    public static final String CHARSEQUENCE = "charSequence";
+    public static final String STRING = "string";
     public static final String CHARARRAY = "char[]";
     public static final String COLOR = "color";
     public static final String IMAGE = "image";

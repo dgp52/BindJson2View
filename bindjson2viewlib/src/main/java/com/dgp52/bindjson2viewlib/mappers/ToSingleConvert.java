@@ -33,7 +33,7 @@ public final class ToSingleConvert {
         mapConverters.put(ColorConverter.class, new ColorConverter());
     }
 
-    public static Object toSingleConverter(Class c, String value) {
+    public static Object toSingleConverter(Class c, String value) throws Exception{
         return mapConverters.get(c).convert(value);
     }
 }
