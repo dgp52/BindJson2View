@@ -31,10 +31,6 @@ public class ServiceException {
             logExceptions.add(new LogException(LogType.ERROR, message,android_version,e));
     }
 
-    public static void logI() {
-        logI("");
-    }
-
     public static void logE(Exception e) {
         logE("",e);
     }

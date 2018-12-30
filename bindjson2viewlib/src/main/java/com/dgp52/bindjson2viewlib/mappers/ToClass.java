@@ -1,7 +1,7 @@
 package com.dgp52.bindjson2viewlib.mappers;
 
 import com.dgp52.bindjson2viewlib.converters.single.ColorConverter;
-import com.dgp52.bindjson2viewlib.converters.multi.ResourceConverter;
+import com.dgp52.bindjson2viewlib.converters.multi.ImageConverter;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
 import org.json.JSONArray;
@@ -35,7 +35,7 @@ public final class ToClass {
 
         //Converters
         mapClass.put(Keyword.COLOR, ColorConverter.class);
-        mapClass.put(Keyword.RESOURCE, ResourceConverter.class);
+        mapClass.put(Keyword.IMAGE, ImageConverter.class);
     }
 
     public static Class toClass (String className) {

@@ -1,6 +1,6 @@
 package com.dgp52.bindjson2viewlib.mappers;
 
-import com.dgp52.bindjson2viewlib.converters.multi.ResourceConverter;
+import com.dgp52.bindjson2viewlib.converters.multi.ImageConverter;
 import com.dgp52.bindjson2viewlib.interfaces.MultiConvert;
 
 import org.json.JSONArray;
@@ -13,10 +13,10 @@ public final class ToMultiConvert {
 
     static {
         mapConverters = new HashMap<>();
-        mapConverters.put(ResourceConverter.class, new ResourceConverter());
+        mapConverters.put(ImageConverter.class, new ImageConverter());
     }
 
-    public static Object toMultiConverter(Class c, JSONArray values) {
+    public static Object toMultiConverter(Class c, JSONArray values) throws Exception{
         return mapConverters.get(c).convert(values);
     }
 }
