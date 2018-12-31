@@ -27,4 +27,6 @@ public final class Keyword {
     public static final String CHARARRAY = "char[]";
     public static final String COLOR = "color";
     public static final String IMAGE = "image";
+    public static final String WIDTH = "width";
+    public static final String HEIGHT = "height";
 }

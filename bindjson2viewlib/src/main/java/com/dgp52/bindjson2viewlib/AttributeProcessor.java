@@ -2,7 +2,6 @@ package com.dgp52.bindjson2viewlib;
 
 import android.os.Looper;
 import android.os.Handler;
-import android.view.KeyEvent;
 import android.view.View;
 
 import com.dgp52.bindjson2viewlib.thread.CustomThreadPoolExecutor;

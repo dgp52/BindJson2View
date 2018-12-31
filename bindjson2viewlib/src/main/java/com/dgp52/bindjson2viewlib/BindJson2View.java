@@ -1,7 +1,5 @@
 package com.dgp52.bindjson2viewlib;
 
-import android.util.DisplayMetrics;
-
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;
 

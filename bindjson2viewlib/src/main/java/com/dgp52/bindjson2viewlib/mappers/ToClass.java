@@ -2,6 +2,8 @@ package com.dgp52.bindjson2viewlib.mappers;
 
 import com.dgp52.bindjson2viewlib.converters.single.ColorConverter;
 import com.dgp52.bindjson2viewlib.converters.multi.ImageConverter;
+import com.dgp52.bindjson2viewlib.converters.single.HeightConverter;
+import com.dgp52.bindjson2viewlib.converters.single.WidthConverter;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
 import org.json.JSONArray;
@@ -36,6 +38,8 @@ public final class ToClass {
         //Converters
         mapClass.put(Keyword.COLOR, ColorConverter.class);
         mapClass.put(Keyword.IMAGE, ImageConverter.class);
+        mapClass.put(Keyword.WIDTH, WidthConverter.class);
+        mapClass.put(Keyword.HEIGHT, HeightConverter.class);
     }
 
     public static Class toClass (String className) {
