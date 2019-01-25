@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class ToMultiConvert {
+public final class ClassToMultiConvert {
     private static Map<Class,MultiConvert> mapConverters;
 
     static {

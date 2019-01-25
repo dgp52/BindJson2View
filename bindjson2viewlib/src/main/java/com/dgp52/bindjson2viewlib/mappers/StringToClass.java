@@ -12,7 +12,7 @@ import org.json.JSONException;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class ToClass {
+public final class StringToClass {
 
     private static Map<String,Class> mapClass;
     static {

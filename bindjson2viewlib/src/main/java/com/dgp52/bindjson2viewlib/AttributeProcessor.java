@@ -1,13 +1,13 @@
 package com.dgp52.bindjson2viewlib;
 
-import android.os.Looper;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
-import com.dgp52.bindjson2viewlib.thread.CustomThreadPoolExecutor;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
+import com.dgp52.bindjson2viewlib.mappers.StringToClass;
+import com.dgp52.bindjson2viewlib.thread.CustomThreadPoolExecutor;
 import com.dgp52.bindjson2viewlib.util.Keyword;
-import com.dgp52.bindjson2viewlib.mappers.ToClass;
 import com.dgp52.bindjson2viewlib.wrappers.LockWrapper;
 import com.dgp52.bindjson2viewlib.wrappers.ValueWrapper;
 
@@ -56,9 +56,9 @@ public final class AttributeProcessor {
                     for(int i=0;i<attributes.length();i++){
                         JSONObject attr = attributes.getJSONObject(i);
                         try{
-                            Class<?>[] reflectedClasses = ToClass.toClasses(attr.getJSONArray(Keyword.PARAMS));
+                            Class<?>[] reflectedClasses = StringToClass.toClasses(attr.getJSONArray(Keyword.PARAMS));
                             Method reflectedMethod = view.getClass().getMethod(attr.getString(Keyword.METHOD), reflectedClasses);
-                            Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),attr.getJSONArray(Keyword.CONVERTS));
+                            Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),attr.getJSONArray(Keyword.CONVERTS), attr.has(Keyword.EXTRA) ? attr.getString(Keyword.EXTRA) : null);
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
                                     reflectedMethod.invoke(view, obj);

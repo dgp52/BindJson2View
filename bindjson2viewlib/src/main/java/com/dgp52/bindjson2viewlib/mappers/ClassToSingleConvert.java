@@ -16,7 +16,7 @@ import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class ToSingleConvert {
+public final class ClassToSingleConvert {
     private static Map<Class,SingleConvert> mapConverters;
 
     static {
@@ -36,7 +36,7 @@ public final class ToSingleConvert {
         mapConverters.put(HeightConverter.class, new HeightConverter());
     }
 
-    public static Object toSingleConverter(Class c, String value) throws Exception{
-        return mapConverters.get(c).convert(value);
+    public static Object toSingleConverter(Class c, String value, String extra) throws Exception{
+        return mapConverters.get(c).convert(value, extra);
     }
 }

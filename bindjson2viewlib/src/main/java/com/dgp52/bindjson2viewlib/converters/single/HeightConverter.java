@@ -5,7 +5,7 @@ import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
 
 public class HeightConverter implements SingleConvert {
     @Override
-    public Object convert(String value) {
+    public Object convert(String value, String extra) {
         if(value.endsWith("%")) {
             int absoluteHeight =  GlobalApplication.getAppContext().getResources().getDisplayMetrics().heightPixels;
             return (int) ((Integer.parseInt(value.substring(0, value.length() - 1))/100.0f)*absoluteHeight);
