@@ -18,18 +18,18 @@ import java.lang.reflect.Method;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-public final class AttributeProcessor {
+public final class ViewProcessor {
     private static CustomThreadPoolExecutor attributeProcessor;
     public static String jsonString;
 
-    public static void addAttribute(View view, String tag) {
+    public static void addView(View view, String tag) {
         if(view!=null && tag!=null) {
             view.setTag(tag);
-            addAttribute(view);
+            addView(view);
         }
     }
 
-    public static void addAttribute(View view) {
+    public static void addView(View view) {
         if(view==null || view.getTag()==null || !(view.getTag() instanceof String))
             return;
         if(attributeProcessor==null)

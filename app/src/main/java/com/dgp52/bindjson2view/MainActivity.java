@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.dgp52.bindjson2viewlib.AttributeProcessor;
+import com.dgp52.bindjson2viewlib.ViewProcessor;
 import com.dgp52.bindjson2viewlib.BindJson2View;
 import com.dgp52.bindjson2viewlib.logexception.LogException;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void test() {
-        AttributeProcessor.addAttribute(button);
+        ViewProcessor.addView(button);
 
         BindJson2View.getInstance()
                 .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
                 .start();
-        AttributeProcessor.addAttribute(linearLayout);
-        AttributeProcessor.addAttribute(textView);
+        ViewProcessor.addView(linearLayout);
+        ViewProcessor.addView(textView);
     }
 
     public void log(View view) {
