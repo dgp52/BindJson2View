@@ -1,15 +1,21 @@
 package com.dgp52.bindjson2viewlib.converters.single;
 
+import android.text.TextUtils;
+
 import com.dgp52.bindjson2viewlib.GlobalApplication;
 import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
+import com.dgp52.bindjson2viewlib.logexception.ServiceException;
+import com.dgp52.bindjson2viewlib.logexception.exceptions.InvalidExtraException;
+import com.dgp52.bindjson2viewlib.mappers.StringToExtra;
 
 public class WidthConverter implements SingleConvert {
     @Override
     public Object convert(String value, String extra) {
-        if(value.endsWith("%")) {
-            int absoluteWidth =  GlobalApplication.getAppContext().getResources().getDisplayMetrics().widthPixels;
-            return (int) ((Integer.parseInt(value.substring(0, value.length() - 1))/100.0f)*absoluteWidth);
+        if(TextUtils.isEmpty(extra)) {
+            ServiceException.logE(new InvalidExtraException());
+            return null;
         }
-        return Integer.parseInt(value);
+        int width =  GlobalApplication.getAppContext().getResources().getDisplayMetrics().widthPixels * Integer.parseInt(value);
+        return StringToExtra.toExtra(Integer.toString(width),extra);
     }
 }
