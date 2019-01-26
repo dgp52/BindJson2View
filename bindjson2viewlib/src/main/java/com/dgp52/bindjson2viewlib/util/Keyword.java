@@ -5,10 +5,10 @@ public final class Keyword {
     public static final String FILE_NAME = "bindjson2view_jsonfile";
 
     //Attribute Processor
-    public static final String VIEWS = "views";
+    public static final String BINDERS = "binders";
     public static final String TAGS = "tags";
-    public static final String ATTRIBUTES = "attributes";
-    public static final String METHOD = "method";
+    public static final String METHODS = "methods";
+    public static final String NAME = "name";
     public static final String CONVERTS = "converts";
     public static final String PARAMS = "params";
     public static final String VALUES = "values";

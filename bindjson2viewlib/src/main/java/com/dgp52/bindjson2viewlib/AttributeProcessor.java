@@ -41,13 +41,13 @@ public final class AttributeProcessor {
                     LockWrapper.getDownloadCondition().await();
                 }
                 JSONArray attributes = null;
-                JSONArray views = new JSONObject(jsonString).getJSONArray(Keyword.VIEWS);
+                JSONArray views = new JSONObject(jsonString).getJSONArray(Keyword.BINDERS);
                 viewloop:
                 for(int i=0;i<views.length();i++){
                     JSONArray tags = views.getJSONObject(i).getJSONArray(Keyword.TAGS);
                     for(int j=0;j<tags.length();j++){
                         if(tags.getString(j).equals(view.getTag().toString())){
-                            attributes = views.getJSONObject(i).getJSONArray(Keyword.ATTRIBUTES);
+                            attributes = views.getJSONObject(i).getJSONArray(Keyword.METHODS);
                             break viewloop;
                         }
                     }
@@ -57,7 +57,7 @@ public final class AttributeProcessor {
                         JSONObject attr = attributes.getJSONObject(i);
                         try{
                             Class<?>[] reflectedClasses = StringToClass.toClasses(attr.getJSONArray(Keyword.PARAMS));
-                            Method reflectedMethod = view.getClass().getMethod(attr.getString(Keyword.METHOD), reflectedClasses);
+                            Method reflectedMethod = view.getClass().getMethod(attr.getString(Keyword.NAME), reflectedClasses);
                             Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),attr.getJSONArray(Keyword.CONVERTS), attr.has(Keyword.EXTRA) ? attr.getString(Keyword.EXTRA) : null);
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
@@ -68,7 +68,7 @@ public final class AttributeProcessor {
                                 }
                             });
                         } catch(Exception e) {
-                            ServiceException.logE(attr.getString(Keyword.METHOD) + " - " + attr.getJSONArray(Keyword.PARAMS).toString(),e);
+                            ServiceException.logE(attr.getString(Keyword.NAME) + " - " + attr.getJSONArray(Keyword.PARAMS).toString(),e);
                         }
                     }
                 }
