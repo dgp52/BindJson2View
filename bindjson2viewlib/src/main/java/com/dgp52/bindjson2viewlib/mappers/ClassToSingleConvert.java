@@ -1,5 +1,7 @@
 package com.dgp52.bindjson2viewlib.mappers;
 
+import android.view.View;
+
 import com.dgp52.bindjson2viewlib.converters.single.BooleanConverter;
 import com.dgp52.bindjson2viewlib.converters.single.CharConverter;
 import com.dgp52.bindjson2viewlib.converters.single.ColorConverter;
@@ -36,7 +38,7 @@ public final class ClassToSingleConvert {
         mapConverters.put(HeightConverter.class, new HeightConverter());
     }
 
-    public static Object toSingleConverter(Class c, String value, String extra) throws Exception{
-        return mapConverters.get(c).convert(value, extra);
+    public static Object toSingleConverter(Class c, String value, String extra, View view) throws Exception{
+        return mapConverters.get(c).convert(value, extra, view);
     }
 }

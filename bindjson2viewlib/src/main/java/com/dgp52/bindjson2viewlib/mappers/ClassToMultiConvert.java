@@ -1,5 +1,7 @@
 package com.dgp52.bindjson2viewlib.mappers;
 
+import android.view.View;
+
 import com.dgp52.bindjson2viewlib.converters.multi.ImageConverter;
 import com.dgp52.bindjson2viewlib.interfaces.MultiConvert;
 
@@ -16,7 +18,7 @@ public final class ClassToMultiConvert {
         mapConverters.put(ImageConverter.class, new ImageConverter());
     }
 
-    public static Object toMultiConverter(Class c, JSONArray values) throws Exception{
-        return mapConverters.get(c).convert(values);
+    public static Object toMultiConverter(Class c, JSONArray values, String extra, View view) throws Exception{
+        return mapConverters.get(c).convert(values, extra, view);
     }
 }

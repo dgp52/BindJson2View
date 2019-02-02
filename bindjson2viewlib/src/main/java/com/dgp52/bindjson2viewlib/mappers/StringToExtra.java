@@ -1,5 +1,7 @@
 package com.dgp52.bindjson2viewlib.mappers;
 
+import android.view.View;
+
 import com.dgp52.bindjson2viewlib.extras.Hex;
 import com.dgp52.bindjson2viewlib.extras.Percentage;
 import com.dgp52.bindjson2viewlib.extras.Pixel;
@@ -19,7 +21,7 @@ public final class StringToExtra {
         mapExtra.put(Keyword.PIXEL, new Pixel());
     }
 
-    public static Object toExtra (String value, String extra) {
-        return mapExtra.get(extra).convert(value);
+    public static Object toExtra (String value, String extra, View view) {
+        return mapExtra.get(extra).convert(value, view);
     }
 }

@@ -62,7 +62,10 @@ public final class ViewProcessor {
                         try{
                             Class<?>[] reflectedClasses = StringToClass.toClasses(attr.getJSONArray(Keyword.PARAMS));
                             Method reflectedMethod = weakReference.get().getClass().getMethod(attr.getString(Keyword.NAME), reflectedClasses);
-                            Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),attr.getJSONArray(Keyword.CONVERTS), attr.has(Keyword.EXTRA) ? attr.getString(Keyword.EXTRA) : null);
+                            Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),
+                                    attr.getJSONArray(Keyword.CONVERTS),
+                                    attr.has(Keyword.EXTRA) ? attr.getString(Keyword.EXTRA) : null,
+                                    weakReference.get());
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
                                     reflectedMethod.invoke(weakReference.get(), obj);
