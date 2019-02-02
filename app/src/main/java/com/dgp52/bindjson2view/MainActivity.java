@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
-    private Button button;
+    private Button btn0, btn1, btn2;
     private LinearLayout linearLayout;
 
     @Override
@@ -24,20 +24,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
-        button = findViewById(R.id.button2);
+        btn0 = findViewById(R.id.btn0);
+        btn1 = findViewById(R.id.btn1);
+        btn2 = findViewById(R.id.btn2);
         linearLayout = findViewById(R.id.linearLayout);
         test();
     }
 
 
     private void test() {
-        ViewProcessor.addView(button);
-
+        ViewProcessor.addView(btn0);
+        ViewProcessor.addView(btn1);
+        ViewProcessor.addView(btn2);
         BindJson2View.getInstance()
                 .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
                 .start();
-        ViewProcessor.addView(linearLayout);
-        ViewProcessor.addView(textView);
     }
 
     public void log(View view) {

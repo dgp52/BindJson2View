@@ -2,6 +2,7 @@ package com.dgp52.bindjson2viewlib.mappers;
 
 import com.dgp52.bindjson2viewlib.extras.Hex;
 import com.dgp52.bindjson2viewlib.extras.Percentage;
+import com.dgp52.bindjson2viewlib.extras.Pixel;
 import com.dgp52.bindjson2viewlib.interfaces.Extra;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
@@ -15,6 +16,7 @@ public final class StringToExtra {
         mapExtra = new HashMap<>();
         mapExtra.put(Keyword.HEX, new Hex());
         mapExtra.put(Keyword.PERCENTAGE, new Percentage());
+        mapExtra.put(Keyword.PIXEL, new Pixel());
     }
 
     public static Object toExtra (String value, String extra) {

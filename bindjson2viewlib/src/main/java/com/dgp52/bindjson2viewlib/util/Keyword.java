@@ -34,6 +34,7 @@ public final class Keyword {
     //Extras
     public static final String HEX = "hex";
     public static final String PERCENTAGE = "percentage";
+    public static final String PIXEL = "pixel";
     public static final String RES = "res";
     public static final String ASSETS = "assets";
 }

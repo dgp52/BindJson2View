@@ -14,6 +14,7 @@ import com.dgp52.bindjson2viewlib.wrappers.ValueWrapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -30,39 +31,42 @@ public final class ViewProcessor {
     }
 
     public static void addView(View view) {
-        if(view==null || view.getTag()==null || !(view.getTag() instanceof String))
+        WeakReference<View> weakReference = new WeakReference<>(view);
+        if(weakReference == null || weakReference.get() == null ||
+                weakReference.get().getTag() == null || !(weakReference.get().getTag() instanceof String))
             return;
         if(attributeProcessor==null)
             attributeProcessor = new CustomThreadPoolExecutor(1,1,0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
         attributeProcessor.submit(() -> {
             try{
+                if(weakReference == null || weakReference.get()==null)
+                    return;
                 LockWrapper.getLock().lock();
-                while (jsonString==null){
+                while (jsonString==null)
                     LockWrapper.getDownloadCondition().await();
-                }
-                JSONArray attributes = null;
-                JSONArray views = new JSONObject(jsonString).getJSONArray(Keyword.BINDERS);
+                JSONArray methods = null;
+                JSONArray binders = new JSONObject(jsonString).getJSONArray(Keyword.BINDERS);
                 viewloop:
-                for(int i=0;i<views.length();i++){
-                    JSONArray tags = views.getJSONObject(i).getJSONArray(Keyword.TAGS);
+                for(int i=0;i<binders.length();i++){
+                    JSONArray tags = binders.getJSONObject(i).getJSONArray(Keyword.TAGS);
                     for(int j=0;j<tags.length();j++){
-                        if(tags.getString(j).equals(view.getTag().toString())){
-                            attributes = views.getJSONObject(i).getJSONArray(Keyword.METHODS);
+                        if(tags.getString(j).equals(weakReference.get().getTag().toString())){
+                            methods = binders.getJSONObject(i).getJSONArray(Keyword.METHODS);
                             break viewloop;
                         }
                     }
                 }
-                if(attributes!=null){
-                    for(int i=0;i<attributes.length();i++){
-                        JSONObject attr = attributes.getJSONObject(i);
+                if(methods!=null){
+                    for(int i=0;i<methods.length();i++){
+                        JSONObject attr = methods.getJSONObject(i);
                         try{
                             Class<?>[] reflectedClasses = StringToClass.toClasses(attr.getJSONArray(Keyword.PARAMS));
-                            Method reflectedMethod = view.getClass().getMethod(attr.getString(Keyword.NAME), reflectedClasses);
+                            Method reflectedMethod = weakReference.get().getClass().getMethod(attr.getString(Keyword.NAME), reflectedClasses);
                             Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),attr.getJSONArray(Keyword.CONVERTS), attr.has(Keyword.EXTRA) ? attr.getString(Keyword.EXTRA) : null);
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
-                                    reflectedMethod.invoke(view, obj);
-                                    ServiceException.logI(reflectedMethod.getName()+" invoked on "+view.getTag());
+                                    reflectedMethod.invoke(weakReference.get(), obj);
+                                    ServiceException.logI(weakReference.get().getTag() + " serviced by thread " + Thread.currentThread().getName());
                                 } catch (Exception e) {
                                     ServiceException.logE(e);
                                 }

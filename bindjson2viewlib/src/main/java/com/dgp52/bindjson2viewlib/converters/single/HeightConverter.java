@@ -7,6 +7,7 @@ import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.logexception.exceptions.InvalidExtraException;
 import com.dgp52.bindjson2viewlib.mappers.StringToExtra;
+import com.dgp52.bindjson2viewlib.util.Keyword;
 
 public class HeightConverter implements SingleConvert {
     @Override
@@ -15,7 +16,8 @@ public class HeightConverter implements SingleConvert {
             ServiceException.logE(new InvalidExtraException());
             return null;
         }
-        int height =  GlobalApplication.getAppContext().getResources().getDisplayMetrics().heightPixels * Integer.parseInt(value);
-        return StringToExtra.toExtra(Integer.toString(height),extra);
+        if(extra.equals(Keyword.PERCENTAGE))
+            value =  Integer.toString(GlobalApplication.getAppContext().getResources().getDisplayMetrics().heightPixels * Integer.parseInt(value));
+        return StringToExtra.toExtra(value,extra);
     }
 }
