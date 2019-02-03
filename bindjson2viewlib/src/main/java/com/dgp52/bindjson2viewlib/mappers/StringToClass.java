@@ -22,25 +22,17 @@ public final class StringToClass {
     private static Map<String,Class> mapClass;
     static {
         mapClass = new HashMap<>();
-
-        //Primitive class
-        mapClass.put(Keyword.PRIMITIVE_BOOLEAN,boolean.class);
-        mapClass.put(Keyword.PRIMITIVE_BYTE,byte.class);
-        mapClass.put(Keyword.PRIMITIVE_INT,int.class);
-        mapClass.put(Keyword.PRIMITIVE_CHAR,char.class);
-        mapClass.put(Keyword.PRIMITIVE_SHORT,short.class);
-        mapClass.put(Keyword.PRIMITIVE_LONG,long.class);
-        mapClass.put(Keyword.PRIMITIVE_FLOAT,float.class);
-        mapClass.put(Keyword.PRIMITIVE_DOUBLE,double.class);
-
-        //Array class
+        mapClass.put(Keyword.BOOLEAN,boolean.class);
+        mapClass.put(Keyword.BYTE,byte.class);
+        mapClass.put(Keyword.INT,int.class);
+        mapClass.put(Keyword.CHAR,char.class);
+        mapClass.put(Keyword.SHORT,short.class);
+        mapClass.put(Keyword.LONG,long.class);
+        mapClass.put(Keyword.FLOAT,float.class);
+        mapClass.put(Keyword.DOUBLE,double.class);
         mapClass.put(Keyword.CHARARRAY, char[].class);
-
-        //class
         mapClass.put(Keyword.CHARSEQUENCE,CharSequence.class);
         mapClass.put(Keyword.STRING,String.class);
-
-        //Converters
         mapClass.put(Keyword.COLOR, ColorConverter.class);
         mapClass.put(Keyword.IMAGE, ImageConverter.class);
         mapClass.put(Keyword.WIDTH, WidthConverter.class);

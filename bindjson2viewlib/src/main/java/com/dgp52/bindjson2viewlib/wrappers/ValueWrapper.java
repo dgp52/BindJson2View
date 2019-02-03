@@ -2,9 +2,8 @@ package com.dgp52.bindjson2viewlib.wrappers;
 
 import android.view.View;
 
-import com.dgp52.bindjson2viewlib.mappers.StringToClass;
-import com.dgp52.bindjson2viewlib.mappers.ClassToMultiConvert;
-import com.dgp52.bindjson2viewlib.mappers.ClassToSingleConvert;
+import com.dgp52.bindjson2viewlib.mappers.StringToMultiConvert;
+import com.dgp52.bindjson2viewlib.mappers.StringToSingleConvert;
 
 import org.json.JSONArray;
 
@@ -16,11 +15,11 @@ public class ValueWrapper {
         if(resultObjSize == converts.length()) {
             resultObj = new Object[resultObjSize];
             for(int i =0; i<values.length(); i++){
-                resultObj[i] = ClassToSingleConvert.toSingleConverter(StringToClass.toClass(converts.getString(i)), values.getString(i), unit, view);
+                resultObj[i] = StringToSingleConvert.toSingleConverter(converts.getString(i), values.getString(i), unit, view);
             }
         } else {
             resultObj = new Object[1];
-            resultObj[0] = ClassToMultiConvert.toMultiConverter(StringToClass.toClass(converts.getString(0)), values, unit, view);
+            resultObj[0] = StringToMultiConvert.toMultiConverter(converts.getString(0), values, unit, view);
         }
         return resultObj;
     }

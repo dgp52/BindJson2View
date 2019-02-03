@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dgp52.bindjson2viewlib.ViewProcessor;
@@ -33,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.linearLayout);
         test();
 
+
+//        RelativeLayout.LayoutParams S = new RelativeLayout.LayoutParams(100,200);
+//
+//
+//        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(100,100);
+//
+//        p.setMargins(0,0,100,100);
+//        btn2.setLayoutParams(p);
         //ViewGroup.LayoutParams p = new ViewGroup.LayoutParams(100,100);
         //btn0.setLayoutParams((LinearLayout.LayoutParams)p);
         ServiceException.logI(btn0.getLayoutParams().toString());

@@ -20,7 +20,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public final class ViewProcessor {
-    private static CustomThreadPoolExecutor attributeProcessor;
+    private static CustomThreadPoolExecutor viewProcessor;
     public static String jsonString;
 
     public static void addView(View view, String tag) {
@@ -35,9 +35,9 @@ public final class ViewProcessor {
         if(weakReference == null || weakReference.get() == null ||
                 weakReference.get().getTag() == null || !(weakReference.get().getTag() instanceof String))
             return;
-        if(attributeProcessor==null)
-            attributeProcessor = new CustomThreadPoolExecutor(1,1,0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
-        attributeProcessor.submit(() -> {
+        if(viewProcessor==null)
+            viewProcessor = new CustomThreadPoolExecutor(1,1,0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+        viewProcessor.submit(() -> {
             try{
                 if(weakReference == null || weakReference.get()==null)
                     return;
