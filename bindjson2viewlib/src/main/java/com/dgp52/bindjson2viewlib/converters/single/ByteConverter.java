@@ -6,7 +6,7 @@ import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
 
 public class ByteConverter implements SingleConvert {
     @Override
-    public Object convert(String value, String extra, View view) {
+    public Object convert(String value, String unit, View view) {
         return Byte.parseByte(value);
     }
 }

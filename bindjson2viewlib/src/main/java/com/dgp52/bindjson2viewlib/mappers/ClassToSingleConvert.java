@@ -38,7 +38,7 @@ public final class ClassToSingleConvert {
         mapConverters.put(HeightConverter.class, new HeightConverter());
     }
 
-    public static Object toSingleConverter(Class c, String value, String extra, View view) throws Exception{
-        return mapConverters.get(c).convert(value, extra, view);
+    public static Object toSingleConverter(Class c, String value, String unit, View view) throws Exception{
+        return mapConverters.get(c).convert(value, unit, view);
     }
 }

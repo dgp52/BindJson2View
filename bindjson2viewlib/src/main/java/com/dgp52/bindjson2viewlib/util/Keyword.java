@@ -12,7 +12,7 @@ public final class Keyword {
     public static final String CONVERTS = "converts";
     public static final String PARAMS = "params";
     public static final String VALUES = "values";
-    public static final String EXTRA = "extra";
+    public static final String UNIT = "unit";
 
     //Method parameter types and Converters
     public static final String PRIMITIVE_BOOLEAN = "boolean";
@@ -30,8 +30,9 @@ public final class Keyword {
     public static final String IMAGE = "image";
     public static final String WIDTH = "width";
     public static final String HEIGHT = "height";
+    public static final String LAYOUTPARAMS = "layoutParams";
 
-    //Extras
+    //Unit
     public static final String HEX = "hex";
     public static final String PERCENTAGE = "percentage";
     public static final String PIXEL = "pixel";

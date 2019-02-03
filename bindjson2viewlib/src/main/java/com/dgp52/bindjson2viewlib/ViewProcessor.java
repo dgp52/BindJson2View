@@ -64,7 +64,7 @@ public final class ViewProcessor {
                             Method reflectedMethod = weakReference.get().getClass().getMethod(attr.getString(Keyword.NAME), reflectedClasses);
                             Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),
                                     attr.getJSONArray(Keyword.CONVERTS),
-                                    attr.has(Keyword.EXTRA) ? attr.getString(Keyword.EXTRA) : null,
+                                    attr.has(Keyword.UNIT) ? attr.getString(Keyword.UNIT) : null,
                                     weakReference.get());
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {

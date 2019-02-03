@@ -7,7 +7,7 @@ import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
 
 public class LongConverter implements SingleConvert {
     @Override
-    public Object convert(String value, String extra, View view) {
+    public Object convert(String value, String unit, View view) {
         return Long.parseLong(value);
     }
 }

@@ -1,7 +1,10 @@
 package com.dgp52.bindjson2view;
 
+import android.app.Service;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.btn2);
         linearLayout = findViewById(R.id.linearLayout);
         test();
+
+        //ViewGroup.LayoutParams p = new ViewGroup.LayoutParams(100,100);
+        //btn0.setLayoutParams((LinearLayout.LayoutParams)p);
+        ServiceException.logI(btn0.getLayoutParams().toString());
     }
 
 

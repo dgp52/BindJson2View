@@ -18,7 +18,7 @@ public final class ClassToMultiConvert {
         mapConverters.put(ImageConverter.class, new ImageConverter());
     }
 
-    public static Object toMultiConverter(Class c, JSONArray values, String extra, View view) throws Exception{
-        return mapConverters.get(c).convert(values, extra, view);
+    public static Object toMultiConverter(Class c, JSONArray values, String unit, View view) throws Exception{
+        return mapConverters.get(c).convert(values, unit, view);
     }
 }

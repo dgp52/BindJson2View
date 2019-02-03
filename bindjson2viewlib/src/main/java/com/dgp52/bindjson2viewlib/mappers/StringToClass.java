@@ -1,5 +1,7 @@
 package com.dgp52.bindjson2viewlib.mappers;
 
+import android.view.ViewGroup;
+
 import com.dgp52.bindjson2viewlib.converters.single.ColorConverter;
 import com.dgp52.bindjson2viewlib.converters.multi.ImageConverter;
 import com.dgp52.bindjson2viewlib.converters.single.HeightConverter;
@@ -9,8 +11,11 @@ import com.dgp52.bindjson2viewlib.util.Keyword;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.appcompat.widget.ActionBarOverlayLayout;
 
 public final class StringToClass {
 
@@ -40,6 +45,7 @@ public final class StringToClass {
         mapClass.put(Keyword.IMAGE, ImageConverter.class);
         mapClass.put(Keyword.WIDTH, WidthConverter.class);
         mapClass.put(Keyword.HEIGHT, HeightConverter.class);
+        mapClass.put(Keyword.LAYOUTPARAMS, ViewGroup.LayoutParams.class);
     }
 
     public static Class toClass (String className) {
