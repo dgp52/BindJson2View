@@ -3,6 +3,7 @@ package com.dgp52.bindjson2viewlib.util;
 public final class Keyword {
     //App
     public static final String FILE_NAME = "bindjson2view_jsonfile";
+    public static final String VIEW_PROCESSOR_THREAD = "ViewProcessorThread";
 
     //View Processor
     public static final String BINDERS = "binders";
@@ -31,6 +32,7 @@ public final class Keyword {
     public static final String WIDTH = "width";
     public static final String HEIGHT = "height";
     public static final String LAYOUTPARAMS = "layoutParams";
+    public static final String LAYOUTPARAMSWIDTHHEIGHT = "layoutParamsWidthHeight";
 
     //Unit
     public static final String HEX = "hex";

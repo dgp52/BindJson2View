@@ -16,6 +16,7 @@ import com.dgp52.bindjson2viewlib.converters.single.WidthConverter;
 import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public final class StringToSingleConvert {
         mapConverters.put(Keyword.HEIGHT, new HeightConverter());
     }
 
-    public static Object toSingleConverter(String converter, String value, String unit, View view) throws Exception{
-        return mapConverters.get(converter).convert(value, unit, view);
+    public static Object toSingleConverter(String converter, String value, String unit, WeakReference<View> wk) throws Exception{
+        return mapConverters.get(converter).convert(value, unit, wk);
     }
 }

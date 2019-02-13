@@ -8,6 +8,7 @@ import com.dgp52.bindjson2viewlib.unit.Pixel;
 import com.dgp52.bindjson2viewlib.interfaces.Unit;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public final class StringToUnit {
         mapUnit.put(Keyword.PIXEL, new Pixel());
     }
 
-    public static Object toUnit (String value, String unit, View view) {
-        return mapUnit.get(unit).convert(value, view);
+    public static Object toUnit (String value, String unit, WeakReference<View> wk) {
+        return mapUnit.get(unit).convert(value, wk);
     }
 }

@@ -20,7 +20,8 @@
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="log"
+            android:text="Clear"
+            android:onClick="clear"
             android:tag="log1" />
 
         <Button

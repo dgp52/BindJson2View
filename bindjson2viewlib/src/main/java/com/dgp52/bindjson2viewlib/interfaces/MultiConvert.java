@@ -4,6 +4,8 @@ import android.view.View;
 
 import org.json.JSONArray;
 
+import java.lang.ref.WeakReference;
+
 public interface MultiConvert {
-    Object convert(JSONArray jsonArray, String unit, View view) throws Exception;
+    Object convert(JSONArray jsonArray, String unit, WeakReference<View> wk) throws Exception;
 }

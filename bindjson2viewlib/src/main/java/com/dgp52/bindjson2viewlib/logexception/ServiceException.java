@@ -17,21 +17,21 @@ public class ServiceException {
         INFO, ERROR
     }
 
-    public static void logI(String message) {
+    public static synchronized void logI(String message) {
         if(logExceptions==null)
             logExceptions = new ArrayList<>();
         if(showInfo)
             logExceptions.add(new LogException(LogType.INFO,message,android_version));
     }
 
-    public static void logE(String message, Exception e) {
+    public static synchronized void logE(String message, Exception e) {
         if(logExceptions==null)
             logExceptions = new ArrayList<>();
         if(showError)
             logExceptions.add(new LogException(LogType.ERROR, message,android_version,e));
     }
 
-    public static void logE(Exception e) {
+    public static synchronized void logE(Exception e) {
         logE("",e);
     }
 
@@ -48,12 +48,17 @@ public class ServiceException {
         if(logExceptions==null)
             logExceptions = new ArrayList<>();
         for (int i=0;i<logExceptions.size();i++) {
-            if(logExceptions.get(i).getLogType()==LogType.INFO && !showInfo){
+            if(logExceptions.get(i)==null || logExceptions.get(i).getLogType()==LogType.INFO && !showInfo){
                 logExceptions.remove(i);
             } else if (logExceptions.get(i).getLogType()==LogType.ERROR && !showError) {
                 logExceptions.remove(i);
             }
         }
         return logExceptions;
+    }
+
+    public static void clearLogs(){
+        if(logExceptions!=null)
+            logExceptions.clear();
     }
 }
