@@ -2,7 +2,8 @@ package com.dgp52.bindjson2viewlib.wrappers;
 
 import android.content.Context;
 
-import com.dgp52.bindjson2viewlib.ViewProcessor;
+import com.dgp52.bindjson2viewlib.app.IndexJson;
+import com.dgp52.bindjson2viewlib.app.ViewProcessor;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.util.FileManager;
 import com.dgp52.bindjson2viewlib.util.Keyword;
@@ -24,10 +25,11 @@ public class URlWrapper {
             if(url!=null) {
                 try {
                     FileManager.createFile(Keyword.FILE_NAME,context);
-                    ViewProcessor.jsonString = NetworkDownloader.tryDownload(url);
-                    FileManager.writeContent(ViewProcessor.jsonString,Keyword.FILE_NAME,context);
+                    String jsonString = NetworkDownloader.tryDownload(url);
+                    ViewProcessor.indexingComplete = IndexJson.Index(jsonString);
                     LockWrapper.getLock().lock();
                     LockWrapper.getDownloadCondition().signalAll();
+                    FileManager.writeContent(jsonString,Keyword.FILE_NAME,context);
                 } catch (Exception e) {
                     ServiceException.logE(e);
                 } finally {

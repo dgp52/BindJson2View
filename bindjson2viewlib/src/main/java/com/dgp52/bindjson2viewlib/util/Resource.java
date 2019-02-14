@@ -1,6 +1,6 @@
 package com.dgp52.bindjson2viewlib.util;
 
-import com.dgp52.bindjson2viewlib.GlobalApplication;
+import com.dgp52.bindjson2viewlib.app.GlobalApplication;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.logexception.exceptions.ResourceNotFoundException;
 

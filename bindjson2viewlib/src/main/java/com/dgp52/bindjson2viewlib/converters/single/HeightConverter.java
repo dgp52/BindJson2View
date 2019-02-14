@@ -3,7 +3,7 @@ package com.dgp52.bindjson2viewlib.converters.single;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.dgp52.bindjson2viewlib.GlobalApplication;
+import com.dgp52.bindjson2viewlib.app.GlobalApplication;
 import com.dgp52.bindjson2viewlib.interfaces.SingleConvert;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.logexception.exceptions.InvalidUnitException;

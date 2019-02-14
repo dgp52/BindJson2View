@@ -2,14 +2,10 @@ package com.dgp52.bindjson2viewlib.converters.multi;
 
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import com.dgp52.bindjson2viewlib.GlobalApplication;
+import com.dgp52.bindjson2viewlib.app.GlobalApplication;
 import com.dgp52.bindjson2viewlib.interfaces.MultiConvert;
-import com.dgp52.bindjson2viewlib.interfaces.Unit;
 import com.dgp52.bindjson2viewlib.mappers.StringToUnit;
-import com.dgp52.bindjson2viewlib.unit.Percentage;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
 import org.json.JSONArray;

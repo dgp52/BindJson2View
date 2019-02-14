@@ -57,7 +57,7 @@ public class ServiceException {
         return logExceptions;
     }
 
-    public static void clearLogs(){
+    public static synchronized void clearLogs(){
         if(logExceptions!=null)
             logExceptions.clear();
     }

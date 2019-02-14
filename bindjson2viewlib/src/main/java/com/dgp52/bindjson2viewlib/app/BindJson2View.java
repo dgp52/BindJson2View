@@ -1,4 +1,4 @@
-package com.dgp52.bindjson2viewlib;
+package com.dgp52.bindjson2viewlib.app;
 
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;

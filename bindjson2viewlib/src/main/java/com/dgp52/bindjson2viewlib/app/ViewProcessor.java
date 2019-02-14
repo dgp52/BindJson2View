@@ -1,4 +1,4 @@
-package com.dgp52.bindjson2viewlib;
+package com.dgp52.bindjson2viewlib.app;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -16,13 +16,12 @@ import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
-import java.util.WeakHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public final class ViewProcessor {
     private static CustomThreadPoolExecutor viewProcessor;
-    public static String jsonString;
+    public static boolean indexingComplete;
 
     public static void addView(View view, String tag) {
         if(view!=null && tag!=null) {
@@ -41,20 +40,9 @@ public final class ViewProcessor {
                 return;
             try{
                 LockWrapper.getLock().lock();
-                while (jsonString==null)
+                while (!indexingComplete)
                     LockWrapper.getDownloadCondition().await();
-                JSONArray binders = new JSONObject(jsonString).getJSONArray(Keyword.BINDERS);
-                JSONArray methods = null;
-                viewloop:
-                for(int i=0;i<binders.length();i++){
-                    JSONArray tags = binders.getJSONObject(i).getJSONArray(Keyword.TAGS);
-                    for(int j=0;j<tags.length();j++){
-                        if(tags.getString(j).equals(wk.get().getTag().toString())){
-                            methods = binders.getJSONObject(i).getJSONArray(Keyword.METHODS);
-                            break viewloop;
-                        }
-                    }
-                }
+                JSONArray methods = IndexJson.getMethods(wk.get().getTag().toString());
                 if(methods!=null){
                     for(int i=0;i<methods.length();i++){
                         JSONObject attr = methods.getJSONObject(i);

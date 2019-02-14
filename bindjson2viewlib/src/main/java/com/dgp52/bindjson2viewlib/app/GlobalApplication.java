@@ -1,4 +1,4 @@
-package com.dgp52.bindjson2viewlib;
+package com.dgp52.bindjson2viewlib.app;
 
 import android.app.Application;
 import android.content.Context;

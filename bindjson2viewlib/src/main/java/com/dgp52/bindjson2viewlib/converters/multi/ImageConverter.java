@@ -2,7 +2,7 @@ package com.dgp52.bindjson2viewlib.converters.multi;
 
 import android.view.View;
 
-import com.dgp52.bindjson2viewlib.GlobalApplication;
+import com.dgp52.bindjson2viewlib.app.GlobalApplication;
 import com.dgp52.bindjson2viewlib.interfaces.MultiConvert;
 import com.dgp52.bindjson2viewlib.util.Resource;
 

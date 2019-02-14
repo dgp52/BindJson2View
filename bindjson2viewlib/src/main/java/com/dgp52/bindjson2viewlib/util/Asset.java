@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 
-import com.dgp52.bindjson2viewlib.GlobalApplication;
+import com.dgp52.bindjson2viewlib.app.GlobalApplication;
 
 import java.io.IOException;
 import java.io.InputStream;

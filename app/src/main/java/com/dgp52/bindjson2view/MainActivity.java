@@ -6,8 +6,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.dgp52.bindjson2viewlib.ViewProcessor;
-import com.dgp52.bindjson2viewlib.BindJson2View;
+import com.dgp52.bindjson2viewlib.app.ViewProcessor;
+import com.dgp52.bindjson2viewlib.app.BindJson2View;
 import com.dgp52.bindjson2viewlib.logexception.LogException;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 
