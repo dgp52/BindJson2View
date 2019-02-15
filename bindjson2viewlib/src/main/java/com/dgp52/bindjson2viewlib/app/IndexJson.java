@@ -19,6 +19,8 @@ public class IndexJson {
     public static boolean Index(String jsonString) {
         int methodCounter = 0;
         boolean isComplete = true;
+        mapTagIndex.clear();
+        mapIndexMethod.clear();
         try {
             JSONArray binders = new JSONObject(jsonString).getJSONArray(Keyword.BINDERS);
             for(int i=0;i<binders.length();i++){

@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 public final class ViewProcessor {
     private static CustomThreadPoolExecutor viewProcessor;
-    public static boolean indexingComplete;
+    public static boolean indexingComplete = false;
 
     public static void addView(View view, String tag) {
         if(view!=null && tag!=null) {

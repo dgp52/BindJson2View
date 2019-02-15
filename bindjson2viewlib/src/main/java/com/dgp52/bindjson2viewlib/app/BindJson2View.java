@@ -1,7 +1,6 @@
 package com.dgp52.bindjson2viewlib.app;
 
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
-import com.dgp52.bindjson2viewlib.wrappers.URlWrapper;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,14 +26,17 @@ public final class BindJson2View {
     }
 
     @NonNull
-    public URlWrapper useNetwork(String url_str) {
+    public JSONProcessor useNetwork(String url_str) {
         URL url = null;
         try {
             url = new URL(url_str);
         } catch (MalformedURLException e) {
             ServiceException.logE(e);
         }
-        return new URlWrapper(url,GlobalApplication.getAppContext());
+        return new JSONProcessor(url);
     }
 
+    public JSONProcessor useLocal(String jsonString) {
+        return new JSONProcessor(jsonString);
+    }
 }
