@@ -27,7 +27,8 @@ public final class Keyword {
         CONVERTS("converts"),
         PARAMS("params"),
         VALUES("values"),
-        UNIT("unit");
+        UNIT("unit"),
+        SWITCH("switch");
 
         private final String value;
         JSONProperty(String value) {
@@ -77,6 +78,20 @@ public final class Keyword {
 
         private final String value;
         Unit(String value) {
+            this.value = value;
+        }
+
+        public String getValue(){
+            return value;
+        }
+    }
+
+    public enum Switch {
+        ON("on"),
+        OFF("off");
+
+        private final String value;
+        Switch(String value) {
             this.value = value;
         }
 

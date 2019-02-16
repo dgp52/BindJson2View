@@ -27,9 +27,13 @@ public class IndexJson {
                 JSONArray methods = binders.getJSONObject(i).getJSONArray(Keyword.JSONProperty.METHODS.getValue());
                 List<Integer> methodIndices = new ArrayList<>();
                 for(int j=0;j<methods.length();j++){
-                    mapIndexMethod.put(methodCounter,methods.getJSONObject(j));
-                    methodIndices.add(methodCounter);
-                    methodCounter++;
+                    JSONObject method = methods.getJSONObject(j);
+                    if(!method.has(Keyword.JSONProperty.SWITCH.getValue()) ||
+                            method.getString(Keyword.JSONProperty.SWITCH.getValue()).equals(Keyword.Switch.ON.getValue())) {
+                        mapIndexMethod.put(methodCounter,method);
+                        methodIndices.add(methodCounter);
+                        methodCounter++;
+                    }
                 }
                 JSONArray tags = binders.getJSONObject(i).getJSONArray(Keyword.JSONProperty.TAGS.getValue());
                 for(int t=0;t<tags.length();t++){
