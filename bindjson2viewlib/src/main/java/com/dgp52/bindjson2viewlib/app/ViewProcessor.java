@@ -56,7 +56,7 @@ public final class ViewProcessor {
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
                                     reflectedMethod.invoke(wk.get(), obj);
-                                    ServiceException.logI(wk.get().getTag() + " processed");
+                                    ServiceException.logI(wk.get().getTag() + " " +reflectedMethod.getName() + " processed");
                                 } catch (Exception e) {
                                     ServiceException.logE(e);
                                 }

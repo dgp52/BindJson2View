@@ -27,13 +27,23 @@ public class JSONProcessor {
 
     public void start() {
         new Thread(()-> {
-            Thread.currentThread().setName(Keyword.NETWORK_THREAD);
+            Thread.currentThread().setName(Keyword.JSON_PROCESSOR_THREAD);
             try {
                 LockWrapper.getLock().lock();
                 FileManager.createFile(Keyword.FILE_NAME, GlobalApplication.getAppContext());
-                if(processType.equals(Keyword.USENETWORK) && url!=null)
+                if(processType.equals(Keyword.USENETWORK) && url!=null) {
                     jsonString = NetworkDownloader.tryDownload(url);
+                    if(jsonString == null) {
+                        jsonString = FileManager.readContent(Keyword.FILE_NAME, GlobalApplication.getAppContext());
+                        ServiceException.logI("JSON processor used local file. Please check your Internet connection.");
+                    }
+                }
                 ViewProcessor.indexingComplete = IndexJson.Index(jsonString);
+                if(!ViewProcessor.indexingComplete) {
+                    jsonString = FileManager.readContent(Keyword.FILE_NAME, GlobalApplication.getAppContext());
+                    ViewProcessor.indexingComplete = IndexJson.Index(jsonString);
+                    ServiceException.logI("JSON processor used local file. Please validate JSON.");
+                }
                 LockWrapper.getDownloadCondition().signalAll();
                 if(ViewProcessor.indexingComplete)
                     FileManager.writeContent(jsonString,Keyword.FILE_NAME,GlobalApplication.getAppContext());

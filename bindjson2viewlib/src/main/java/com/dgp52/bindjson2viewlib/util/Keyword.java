@@ -4,7 +4,7 @@ public final class Keyword {
     //App
     public static final String FILE_NAME = "bindjson2view_jsonfile";
     public static final String VIEW_PROCESSOR_THREAD = "viewProcessorThread";
-    public static final String NETWORK_THREAD = "networkThread";
+    public static final String JSON_PROCESSOR_THREAD = "jsonProcessorThread";
     public static final String USENETWORK = "network";
     public static final String USELOCAL = "local";
 
