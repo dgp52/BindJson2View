@@ -19,7 +19,7 @@ public class WidthConverter implements SingleConvert {
             ServiceException.logE(new InvalidUnitException());
             return null;
         }
-        if(unit.equals(Keyword.PERCENTAGE))
+        if(unit.equals(Keyword.Unit.PERCENTAGE.getValue()))
             value =  Integer.toString(GlobalApplication.getAppContext().getResources().getDisplayMetrics().widthPixels * Integer.parseInt(value));
         return StringToUnit.toUnit(value,unit,wk);
     }

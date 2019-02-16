@@ -23,14 +23,14 @@ public class LayoutParamsWidthHeight implements MultiConvert {
         if(wk.get()!=null) {
             int width = jsonArray.getInt(0);
             int height = jsonArray.getInt(1);
-            if(unit.equals(Keyword.PERCENTAGE)) {
+            if(unit.equals(Keyword.Unit.PERCENTAGE.getValue())) {
                 width = GlobalApplication.getAppContext().getResources().getDisplayMetrics().widthPixels * width;
                 height = GlobalApplication.getAppContext().getResources().getDisplayMetrics().heightPixels * height;
             }
             width = (int)StringToUnit.toUnit(Integer.toString(width),unit,wk);
             height = (int)StringToUnit.toUnit(Integer.toString(height),unit,wk);
-            Field wField = wk.get().getLayoutParams().getClass().getField(Keyword.WIDTH);
-            Field hField = wk.get().getLayoutParams().getClass().getField(Keyword.HEIGHT);
+            Field wField = wk.get().getLayoutParams().getClass().getField(Keyword.ConvertType.WIDTH.getValue());
+            Field hField = wk.get().getLayoutParams().getClass().getField(Keyword.ConvertType.HEIGHT.getValue());
             wField.setInt(wk.get().getLayoutParams(), width);
             hField.setInt(wk.get().getLayoutParams(), height);
             return wk.get().getLayoutParams();

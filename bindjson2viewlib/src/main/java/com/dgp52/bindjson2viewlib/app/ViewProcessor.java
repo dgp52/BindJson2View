@@ -35,7 +35,7 @@ public final class ViewProcessor {
         if(viewProcessor==null)
             viewProcessor = new CustomThreadPoolExecutor(1,1,0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
         viewProcessor.submit(() -> {
-            Thread.currentThread().setName(Keyword.VIEW_PROCESSOR_THREAD);
+            Thread.currentThread().setName(Keyword.App.VIEWPROCESSORTHREAD.getValue());
             if(wk==null || wk.get() == null || wk.get().getTag() == null || !(wk.get().getTag() instanceof String))
                 return;
             try{
@@ -47,11 +47,11 @@ public final class ViewProcessor {
                     for(int i=0;i<methods.length();i++){
                         JSONObject attr = methods.getJSONObject(i);
                         try{
-                            Class<?>[] reflectedClasses = StringToClass.toClasses(attr.getJSONArray(Keyword.PARAMS));
-                            Method reflectedMethod = wk.get().getClass().getMethod(attr.getString(Keyword.NAME), reflectedClasses);
-                            Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.VALUES),
-                                    attr.getJSONArray(Keyword.CONVERTS),
-                                    attr.has(Keyword.UNIT) ? attr.getString(Keyword.UNIT) : null,
+                            Class<?>[] reflectedClasses = StringToClass.toClasses(attr.getJSONArray(Keyword.JSONProperty.PARAMS.getValue()));
+                            Method reflectedMethod = wk.get().getClass().getMethod(attr.getString(Keyword.JSONProperty.NAME.getValue()), reflectedClasses);
+                            Object[] obj = ValueWrapper.toObject(attr.getJSONArray(Keyword.JSONProperty.VALUES.getValue()),
+                                    attr.getJSONArray(Keyword.JSONProperty.CONVERTS.getValue()),
+                                    attr.has(Keyword.JSONProperty.UNIT.getValue()) ? attr.getString(Keyword.JSONProperty.UNIT.getValue()) : null,
                                     wk);
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 try {
@@ -62,7 +62,7 @@ public final class ViewProcessor {
                                 }
                             });
                         } catch(Exception e) {
-                            ServiceException.logE(attr.getString(Keyword.NAME) + " - " + attr.getJSONArray(Keyword.PARAMS).toString(),e);
+                            ServiceException.logE(attr.getString(Keyword.JSONProperty.NAME.getValue()) + " - " + attr.getJSONArray(Keyword.JSONProperty.PARAMS.getValue()).toString(),e);
                         }
                     }
                 }

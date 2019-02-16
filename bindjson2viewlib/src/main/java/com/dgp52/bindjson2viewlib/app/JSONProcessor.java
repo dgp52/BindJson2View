@@ -17,36 +17,36 @@ public class JSONProcessor {
 
     public JSONProcessor(URL url) {
         this.url = url;
-        this.processType = Keyword.USENETWORK;
+        this.processType = Keyword.App.USENETWORK.getValue();
     }
 
     public JSONProcessor(String jsonString) {
         this.jsonString = jsonString;
-        this.processType = Keyword.USELOCAL;
+        this.processType = Keyword.App.USELOCAL.getValue();
     }
 
     public void start() {
         new Thread(()-> {
-            Thread.currentThread().setName(Keyword.JSON_PROCESSOR_THREAD);
+            Thread.currentThread().setName(Keyword.App.JSONPROCESSORTHREAD.getValue());
             try {
                 LockWrapper.getLock().lock();
-                FileManager.createFile(Keyword.FILE_NAME, GlobalApplication.getAppContext());
-                if(processType.equals(Keyword.USENETWORK) && url!=null) {
+                FileManager.createFile(Keyword.App.FILENAME.getValue(), GlobalApplication.getAppContext());
+                if(processType.equals(Keyword.App.USENETWORK.getValue()) && url!=null) {
                     jsonString = NetworkDownloader.tryDownload(url);
                     if(jsonString == null) {
-                        jsonString = FileManager.readContent(Keyword.FILE_NAME, GlobalApplication.getAppContext());
+                        jsonString = FileManager.readContent(Keyword.App.FILENAME.getValue(), GlobalApplication.getAppContext());
                         ServiceException.logI("JSON processor used local file. Please check your Internet connection.");
                     }
                 }
                 ViewProcessor.indexingComplete = IndexJson.Index(jsonString);
                 if(!ViewProcessor.indexingComplete) {
-                    jsonString = FileManager.readContent(Keyword.FILE_NAME, GlobalApplication.getAppContext());
+                    jsonString = FileManager.readContent(Keyword.App.FILENAME.getValue(), GlobalApplication.getAppContext());
                     ViewProcessor.indexingComplete = IndexJson.Index(jsonString);
                     ServiceException.logI("JSON processor used local file. Please validate JSON.");
                 }
                 LockWrapper.getDownloadCondition().signalAll();
                 if(ViewProcessor.indexingComplete)
-                    FileManager.writeContent(jsonString,Keyword.FILE_NAME,GlobalApplication.getAppContext());
+                    FileManager.writeContent(jsonString,Keyword.App.FILENAME.getValue(),GlobalApplication.getAppContext());
             } catch (Exception e) {
                 ServiceException.logE(e);
             } finally {

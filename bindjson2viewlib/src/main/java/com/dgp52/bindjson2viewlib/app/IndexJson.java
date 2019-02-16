@@ -22,16 +22,16 @@ public class IndexJson {
         mapTagIndex.clear();
         mapIndexMethod.clear();
         try {
-            JSONArray binders = new JSONObject(jsonString).getJSONArray(Keyword.BINDERS);
+            JSONArray binders = new JSONObject(jsonString).getJSONArray(Keyword.JSONProperty.BINDERS.getValue());
             for(int i=0;i<binders.length();i++){
-                JSONArray methods = binders.getJSONObject(i).getJSONArray(Keyword.METHODS);
+                JSONArray methods = binders.getJSONObject(i).getJSONArray(Keyword.JSONProperty.METHODS.getValue());
                 List<Integer> methodIndices = new ArrayList<>();
                 for(int j=0;j<methods.length();j++){
                     mapIndexMethod.put(methodCounter,methods.getJSONObject(j));
                     methodIndices.add(methodCounter);
                     methodCounter++;
                 }
-                JSONArray tags = binders.getJSONObject(i).getJSONArray(Keyword.TAGS);
+                JSONArray tags = binders.getJSONObject(i).getJSONArray(Keyword.JSONProperty.TAGS.getValue());
                 for(int t=0;t<tags.length();t++){
                     if(mapTagIndex.containsKey(tags.getString(t))){
                         mapTagIndex.get(tags.getString(t)).addAll(methodIndices);

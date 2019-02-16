@@ -22,22 +22,22 @@ public final class StringToClass {
     private static Map<String,Class> mapClass;
     static {
         mapClass = new HashMap<>();
-        mapClass.put(Keyword.BOOLEAN,boolean.class);
-        mapClass.put(Keyword.BYTE,byte.class);
-        mapClass.put(Keyword.INT,int.class);
-        mapClass.put(Keyword.CHAR,char.class);
-        mapClass.put(Keyword.SHORT,short.class);
-        mapClass.put(Keyword.LONG,long.class);
-        mapClass.put(Keyword.FLOAT,float.class);
-        mapClass.put(Keyword.DOUBLE,double.class);
-        mapClass.put(Keyword.CHARARRAY, char[].class);
-        mapClass.put(Keyword.CHARSEQUENCE,CharSequence.class);
-        mapClass.put(Keyword.STRING,String.class);
-        mapClass.put(Keyword.COLOR, ColorConverter.class);
-        mapClass.put(Keyword.IMAGE, ImageConverter.class);
-        mapClass.put(Keyword.WIDTH, WidthConverter.class);
-        mapClass.put(Keyword.HEIGHT, HeightConverter.class);
-        mapClass.put(Keyword.LAYOUTPARAMS, ViewGroup.LayoutParams.class);
+        mapClass.put(Keyword.ConvertType.BOOLEAN.getValue(),boolean.class);
+        mapClass.put(Keyword.ConvertType.BYTE.getValue(),byte.class);
+        mapClass.put(Keyword.ConvertType.INT.getValue(),int.class);
+        mapClass.put(Keyword.ConvertType.CHAR.getValue(),char.class);
+        mapClass.put(Keyword.ConvertType.SHORT.getValue(),short.class);
+        mapClass.put(Keyword.ConvertType.LONG.getValue(),long.class);
+        mapClass.put(Keyword.ConvertType.FLOAT.getValue(),float.class);
+        mapClass.put(Keyword.ConvertType.DOUBLE.getValue(),double.class);
+        mapClass.put(Keyword.ConvertType.CHARARRAY.getValue(), char[].class);
+        mapClass.put(Keyword.ConvertType.CHARSEQUENCE.getValue(),CharSequence.class);
+        mapClass.put(Keyword.ConvertType.STRING.getValue(),String.class);
+        mapClass.put(Keyword.ConvertType.COLOR.getValue(), ColorConverter.class);
+        mapClass.put(Keyword.ConvertType.IMAGE.getValue(), ImageConverter.class);
+        mapClass.put(Keyword.ConvertType.WIDTH.getValue(), WidthConverter.class);
+        mapClass.put(Keyword.ConvertType.HEIGHT.getValue(), HeightConverter.class);
+        mapClass.put(Keyword.ConvertType.LAYOUTPARAMS.getValue(), ViewGroup.LayoutParams.class);
     }
 
     public static Class toClass (String className) {

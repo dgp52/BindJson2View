@@ -17,9 +17,9 @@ public final class StringToUnit {
     private static Map<String, Unit> mapUnit;
     static {
         mapUnit = new HashMap<>();
-        mapUnit.put(Keyword.HEX, new Hex());
-        mapUnit.put(Keyword.PERCENTAGE, new Percentage());
-        mapUnit.put(Keyword.PIXEL, new Pixel());
+        mapUnit.put(Keyword.Unit.HEX.getValue(), new Hex());
+        mapUnit.put(Keyword.Unit.PERCENTAGE.getValue(), new Percentage());
+        mapUnit.put(Keyword.Unit.PIXEL.getValue(), new Pixel());
     }
 
     public static Object toUnit (String value, String unit, WeakReference<View> wk) {

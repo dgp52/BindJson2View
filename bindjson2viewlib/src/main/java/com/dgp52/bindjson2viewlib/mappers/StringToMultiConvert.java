@@ -18,8 +18,8 @@ public final class StringToMultiConvert {
 
     static {
         mapConverters = new HashMap<>();
-        mapConverters.put(Keyword.IMAGE, new ImageConverter());
-        mapConverters.put(Keyword.LAYOUTPARAMSWIDTHHEIGHT, new LayoutParamsWidthHeight());
+        mapConverters.put(Keyword.ConvertType.IMAGE.getValue(), new ImageConverter());
+        mapConverters.put(Keyword.ConvertType.LAYOUTPARAMSWIDTHHEIGHT.getValue(), new LayoutParamsWidthHeight());
     }
 
     public static Object toMultiConverter(String converter, JSONArray values, String unit, WeakReference<View> wk) throws Exception{

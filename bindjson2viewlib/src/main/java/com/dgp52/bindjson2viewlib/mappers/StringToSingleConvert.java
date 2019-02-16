@@ -25,19 +25,19 @@ public final class StringToSingleConvert {
 
     static {
         mapConverters = new HashMap<>();
-        mapConverters.put(Keyword.BOOLEAN,new BooleanConverter());
-        mapConverters.put(Keyword.BYTE, new CharConverter());
-        mapConverters.put(Keyword.INT, new IntConverter());
-        mapConverters.put(Keyword.CHAR, new CharConverter());
-        mapConverters.put(Keyword.SHORT, new ShortConverter());
-        mapConverters.put(Keyword.LONG, new LongConverter());
-        mapConverters.put(Keyword.FLOAT, new FloatConverter());
-        mapConverters.put(Keyword.DOUBLE, new DoubleConverter());
-        mapConverters.put(Keyword.CHARSEQUENCE, new StringConverter());
-        mapConverters.put(Keyword.STRING, new StringConverter());
-        mapConverters.put(Keyword.COLOR, new ColorConverter());
-        mapConverters.put(Keyword.WIDTH, new WidthConverter());
-        mapConverters.put(Keyword.HEIGHT, new HeightConverter());
+        mapConverters.put(Keyword.ConvertType.BOOLEAN.getValue(),new BooleanConverter());
+        mapConverters.put(Keyword.ConvertType.BYTE.getValue(), new CharConverter());
+        mapConverters.put(Keyword.ConvertType.INT.getValue(), new IntConverter());
+        mapConverters.put(Keyword.ConvertType.CHAR.getValue(), new CharConverter());
+        mapConverters.put(Keyword.ConvertType.SHORT.getValue(), new ShortConverter());
+        mapConverters.put(Keyword.ConvertType.LONG.getValue(), new LongConverter());
+        mapConverters.put(Keyword.ConvertType.FLOAT.getValue(), new FloatConverter());
+        mapConverters.put(Keyword.ConvertType.DOUBLE.getValue(), new DoubleConverter());
+        mapConverters.put(Keyword.ConvertType.CHARSEQUENCE.getValue(), new StringConverter());
+        mapConverters.put(Keyword.ConvertType.STRING.getValue(), new StringConverter());
+        mapConverters.put(Keyword.ConvertType.COLOR.getValue(), new ColorConverter());
+        mapConverters.put(Keyword.ConvertType.WIDTH.getValue(), new WidthConverter());
+        mapConverters.put(Keyword.ConvertType.HEIGHT.getValue(), new HeightConverter());
     }
 
     public static Object toSingleConverter(String converter, String value, String unit, WeakReference<View> wk) throws Exception{
