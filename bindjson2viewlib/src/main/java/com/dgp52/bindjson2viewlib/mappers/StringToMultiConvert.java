@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.dgp52.bindjson2viewlib.converters.multi.ImageConverter;
 import com.dgp52.bindjson2viewlib.converters.multi.LayoutParamsWidthHeight;
+import com.dgp52.bindjson2viewlib.converters.multi.ColorConverter;
 import com.dgp52.bindjson2viewlib.interfaces.MultiConvert;
 import com.dgp52.bindjson2viewlib.util.Keyword;
 
@@ -18,8 +19,9 @@ public final class StringToMultiConvert {
 
     static {
         mapConverters = new HashMap<>();
-        mapConverters.put(Keyword.ConvertType.IMAGE.getValue(), new ImageConverter());
-        mapConverters.put(Keyword.ConvertType.LAYOUTPARAMSWIDTHHEIGHT.getValue(), new LayoutParamsWidthHeight());
+        mapConverters.put(Keyword.MultiConvert.IMAGE.getValue(), new ImageConverter());
+        mapConverters.put(Keyword.MultiConvert.COLOR.getValue(), new ColorConverter());
+        mapConverters.put(Keyword.MultiConvert.LAYOUTPARAMSWIDTHHEIGHT.getValue(), new LayoutParamsWidthHeight());
     }
 
     public static Object toMultiConverter(String converter, JSONArray values, String unit, WeakReference<View> wk) throws Exception{

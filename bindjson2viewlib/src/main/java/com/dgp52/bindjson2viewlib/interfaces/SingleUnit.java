@@ -4,6 +4,6 @@ import android.view.View;
 
 import java.lang.ref.WeakReference;
 
-public interface Unit {
+public interface SingleUnit {
     Object convert(String value, WeakReference<View> wk);
 }

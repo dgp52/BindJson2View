@@ -48,6 +48,8 @@ public class IndexJson {
             isComplete = false;
             ServiceException.logE(e);
         }
+        if(isComplete)
+            ServiceException.logI("Indexing successful");
         return isComplete;
     }
 

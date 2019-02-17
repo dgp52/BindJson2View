@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
         btn0 = findViewById(R.id.btn0);
+        //btn0.setBackgroundDrawable(Asset.getDrawableFromAssets("d.jpg"));
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         linearLayout = findViewById(R.id.linearLayout);
+
         test();
     }
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 .useNetwork("https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0")
                 .start();
 //        BindJson2View.getInstance()
-//              .useLocal("{\"binders\":[{\"tags\":[\"log0\",\"log2\"],\"methods\":[{\"name\":\"setBackgroundColor\",\"params\":[\"int\"],\"values\":[\"4286f4\"],\"converts\":[\"color\"],\"unit\":\"hex\"}]},{\"tags\":[\"log0\"],\"methods\":[{\"name\":\"setLayoutParams\",\"params\":[\"layoutParams\"],\"values\":[\"500\",\"500\"],\"converts\":[\"layoutParamsWidthHeight\"],\"unit\":\"pixel\"},{\"name\":\"setText\",\"params\":[\"charSequence\"],\"values\":[\"Position\"],\"converts\":[\"string\"]}]},{\"tags\":[\"log2\"],\"methods\":[{\"name\":\"setVisibility\",\"params\":[\"int\"],\"values\":[\"0\"],\"converts\":[\"int\"]},{\"name\":\"setWidth\",\"params\":[\"int\"],\"values\":[\"50\"],\"converts\":[\"width\"],\"unit\":\"percentage\"}]},{\"tags\":[\"log4234\"],\"methods\":[{\"name\":\"setLayoutParams\",\"params\":[\"layoutParams\"],\"values\":[\"500\",\"500\"],\"converts\":[\"layoutParamsWidthHeight\"],\"unit\":\"pixel\"}]}]}")
+//              .useLocal("{\"binders\":[{\"tags\":[\"log2\"],\"methods\":[{\"name\":\"setBackgroundResource\",\"params\":[\"int\"],\"values\":[\"gravity\",\"mipmap\"],\"converts\":[\"image\"],\"unit\":\"resource\"}]},{\"tags\":[\"log0\"],\"methods\":[{\"name\":\"setBackgroundColor\",\"params\":[\"int\"],\"values\":[\"4286f4\"],\"converts\":[\"color\"],\"unit\":\"hex\"}]},{\"tags\":[\"log2\"],\"methods\":[{\"name\":\"setLayoutParams\",\"params\":[\"layoutParams\"],\"values\":[\"60\",\"30\"],\"converts\":[\"layoutParamsWidthHeight\"],\"unit\":\"percentage\",\"switch\":\"on\"},{\"name\":\"setText\",\"params\":[\"charSequence\"],\"values\":[\"Position\"],\"converts\":[\"string\"],\"switch\":\"off\"}]},{\"tags\":[\"log2432\"],\"methods\":[{\"name\":\"setVisibility\",\"params\":[\"int\"],\"values\":[\"0\"],\"converts\":[\"int\"]},{\"name\":\"setWidth\",\"params\":[\"int\"],\"values\":[\"50\"],\"converts\":[\"width\"],\"unit\":\"percentage\"}]},{\"tags\":[\"log4234\"],\"methods\":[{\"name\":\"setLayoutParams\",\"params\":[\"layoutParams\"],\"values\":[\"500\",\"500\"],\"converts\":[\"layoutParamsWidthHeight\"],\"unit\":\"pixel\"}]}]}")
 //              .start();
     }
 

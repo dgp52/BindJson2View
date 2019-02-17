@@ -29,8 +29,8 @@ public class LayoutParamsWidthHeight implements MultiConvert {
             }
             width = (int)StringToUnit.toUnit(Integer.toString(width),unit,wk);
             height = (int)StringToUnit.toUnit(Integer.toString(height),unit,wk);
-            Field wField = wk.get().getLayoutParams().getClass().getField(Keyword.ConvertType.WIDTH.getValue());
-            Field hField = wk.get().getLayoutParams().getClass().getField(Keyword.ConvertType.HEIGHT.getValue());
+            Field wField = wk.get().getLayoutParams().getClass().getField(Keyword.SingleConvert.WIDTH.getValue());
+            Field hField = wk.get().getLayoutParams().getClass().getField(Keyword.SingleConvert.HEIGHT.getValue());
             wField.setInt(wk.get().getLayoutParams(), width);
             hField.setInt(wk.get().getLayoutParams(), height);
             return wk.get().getLayoutParams();

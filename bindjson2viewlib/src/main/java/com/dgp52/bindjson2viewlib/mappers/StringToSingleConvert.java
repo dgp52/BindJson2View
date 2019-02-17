@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.dgp52.bindjson2viewlib.converters.single.BooleanConverter;
 import com.dgp52.bindjson2viewlib.converters.single.CharConverter;
-import com.dgp52.bindjson2viewlib.converters.single.ColorConverter;
 import com.dgp52.bindjson2viewlib.converters.single.DoubleConverter;
 import com.dgp52.bindjson2viewlib.converters.single.FloatConverter;
 import com.dgp52.bindjson2viewlib.converters.single.HeightConverter;
@@ -25,19 +24,18 @@ public final class StringToSingleConvert {
 
     static {
         mapConverters = new HashMap<>();
-        mapConverters.put(Keyword.ConvertType.BOOLEAN.getValue(),new BooleanConverter());
-        mapConverters.put(Keyword.ConvertType.BYTE.getValue(), new CharConverter());
-        mapConverters.put(Keyword.ConvertType.INT.getValue(), new IntConverter());
-        mapConverters.put(Keyword.ConvertType.CHAR.getValue(), new CharConverter());
-        mapConverters.put(Keyword.ConvertType.SHORT.getValue(), new ShortConverter());
-        mapConverters.put(Keyword.ConvertType.LONG.getValue(), new LongConverter());
-        mapConverters.put(Keyword.ConvertType.FLOAT.getValue(), new FloatConverter());
-        mapConverters.put(Keyword.ConvertType.DOUBLE.getValue(), new DoubleConverter());
-        mapConverters.put(Keyword.ConvertType.CHARSEQUENCE.getValue(), new StringConverter());
-        mapConverters.put(Keyword.ConvertType.STRING.getValue(), new StringConverter());
-        mapConverters.put(Keyword.ConvertType.COLOR.getValue(), new ColorConverter());
-        mapConverters.put(Keyword.ConvertType.WIDTH.getValue(), new WidthConverter());
-        mapConverters.put(Keyword.ConvertType.HEIGHT.getValue(), new HeightConverter());
+        mapConverters.put(Keyword.SingleConvert.BOOLEAN.getValue(),new BooleanConverter());
+        mapConverters.put(Keyword.SingleConvert.BYTE.getValue(), new CharConverter());
+        mapConverters.put(Keyword.SingleConvert.INT.getValue(), new IntConverter());
+        mapConverters.put(Keyword.SingleConvert.CHAR.getValue(), new CharConverter());
+        mapConverters.put(Keyword.SingleConvert.SHORT.getValue(), new ShortConverter());
+        mapConverters.put(Keyword.SingleConvert.LONG.getValue(), new LongConverter());
+        mapConverters.put(Keyword.SingleConvert.FLOAT.getValue(), new FloatConverter());
+        mapConverters.put(Keyword.SingleConvert.DOUBLE.getValue(), new DoubleConverter());
+        mapConverters.put(Keyword.SingleConvert.CHARSEQUENCE.getValue(), new StringConverter());
+        mapConverters.put(Keyword.SingleConvert.STRING.getValue(), new StringConverter());
+        mapConverters.put(Keyword.SingleConvert.WIDTH.getValue(), new WidthConverter());
+        mapConverters.put(Keyword.SingleConvert.HEIGHT.getValue(), new HeightConverter());
     }
 
     public static Object toSingleConverter(String converter, String value, String unit, WeakReference<View> wk) throws Exception{

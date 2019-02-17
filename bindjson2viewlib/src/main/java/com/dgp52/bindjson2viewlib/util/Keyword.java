@@ -40,7 +40,22 @@ public final class Keyword {
         }
     }
 
-    public enum ConvertType {
+    public enum MultiConvert {
+        IMAGE("image"),
+        COLOR("color"),
+        LAYOUTPARAMSWIDTHHEIGHT("layoutParamsWidthHeight");
+
+        private final String value;
+        MultiConvert(String value) {
+            this.value = value;
+        }
+
+        public String getValue(){
+            return value;
+        }
+    }
+
+    public enum SingleConvert {
         BOOLEAN("boolean"),
         BYTE("byte"),
         CHAR("char"),
@@ -52,15 +67,12 @@ public final class Keyword {
         CHARSEQUENCE("charSequence"),
         STRING("string"),
         CHARARRAY("char[]"),
-        COLOR("color"),
-        IMAGE("image"),
         WIDTH("width"),
         HEIGHT("height"),
-        LAYOUTPARAMS("layoutParams"),
-        LAYOUTPARAMSWIDTHHEIGHT("layoutParamsWidthHeight");
+        LAYOUTPARAMS("layoutParams");
 
         private final String value;
-        ConvertType(String value) {
+        SingleConvert(String value) {
             this.value = value;
         }
 
@@ -73,7 +85,7 @@ public final class Keyword {
         HEX("hex"),
         PERCENTAGE("percentage"),
         PIXEL("pixel"),
-        RES("res"),
+        RESOURCE("resource"),
         ASSETS("assets");
 
         private final String value;

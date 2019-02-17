@@ -1,10 +1,12 @@
 package com.dgp52.bindjson2viewlib.converters.multi;
 
+import android.text.TextUtils;
 import android.view.View;
 
-import com.dgp52.bindjson2viewlib.app.GlobalApplication;
 import com.dgp52.bindjson2viewlib.interfaces.MultiConvert;
-import com.dgp52.bindjson2viewlib.util.Resource;
+import com.dgp52.bindjson2viewlib.logexception.ServiceException;
+import com.dgp52.bindjson2viewlib.logexception.exceptions.InvalidUnitException;
+import com.dgp52.bindjson2viewlib.mappers.StringToUnit;
 
 import org.json.JSONArray;
 
@@ -14,6 +16,10 @@ public class ImageConverter implements MultiConvert {
 
     @Override
     public Object convert(JSONArray jsonArray, String unit, WeakReference<View> wk) throws Exception{
-        return Resource.getResource(jsonArray.getString(0), jsonArray.getString(1), GlobalApplication.getAppContext().getPackageName());
+        if(TextUtils.isEmpty(unit)){
+            ServiceException.logE(new InvalidUnitException());
+            return null;
+        }
+        return StringToUnit.toUnit(jsonArray,unit,wk);
     }
 }
