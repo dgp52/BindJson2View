@@ -1,7 +1,6 @@
-package com.dgp52.bindjson2viewlib.app;
+package com.dgp52.bindjson2viewlib.processor;
 
-import android.view.View;
-
+import com.dgp52.bindjson2viewlib.app.GlobalApplication;
 import com.dgp52.bindjson2viewlib.logexception.ServiceException;
 import com.dgp52.bindjson2viewlib.util.FileManager;
 import com.dgp52.bindjson2viewlib.util.Keyword;
@@ -9,18 +8,19 @@ import com.dgp52.bindjson2viewlib.util.NetworkDownloader;
 import com.dgp52.bindjson2viewlib.wrappers.LockWrapper;
 
 import java.net.URL;
+import java.lang.String;
 
-public class JSONProcessor {
+public class JsonProcessor {
     private URL url;
     private String jsonString;
     private String processType;
 
-    public JSONProcessor(URL url) {
+    public JsonProcessor(URL url) {
         this.url = url;
         this.processType = Keyword.App.USENETWORK.getValue();
     }
 
-    public JSONProcessor(String jsonString) {
+    public JsonProcessor(String jsonString) {
         this.jsonString = jsonString;
         this.processType = Keyword.App.USELOCAL.getValue();
     }
@@ -38,10 +38,10 @@ public class JSONProcessor {
                         ServiceException.logI("JSON processor used local file. Please check your Internet connection.");
                     }
                 }
-                ViewProcessor.indexingComplete = IndexJson.Index(jsonString);
+                ViewProcessor.indexingComplete = IndexJsonProcessor.Index(jsonString);
                 if(!ViewProcessor.indexingComplete) {
                     jsonString = FileManager.readContent(Keyword.App.FILENAME.getValue(), GlobalApplication.getAppContext());
-                    ViewProcessor.indexingComplete = IndexJson.Index(jsonString);
+                    ViewProcessor.indexingComplete = IndexJsonProcessor.Index(jsonString);
                     ServiceException.logI("JSON processor used local file. Please validate JSON.");
                 }
                 LockWrapper.getDownloadCondition().signalAll();

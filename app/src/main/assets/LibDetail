@@ -9,20 +9,81 @@ Note: Percentage takes the absolute width and the height of the device. It does 
 Json example file - https://dl.dropboxusercontent.com/s/4601ge88oa0mg0u/document.json?dl=0
 
 {
-"views": [
-   {
-     "tags": ["log"],
-     "attributes" : [
+"binders": [
+  {
+    "tags":["log0"],
+    "methods":[{
+      "name":"setEnabled",
+      "params":["boolean"],
+      "arguments":[{"name":"boolean", "values":["false"]}]
+    },{
+      "name":"setText",
+      "params":["charSequence"],
+      "arguments":[{"name":"charSequence", "values":["Testing..."]}]
+    },{
+      "name":"setText",
+      "params":["char[]","int","int"],
+      "arguments":[
+        {"name":"charArray", "values":["deep"]},
+        {"name":"int", "values":["2"]},
+        {"name":"int", "values":["2"]}],
+      "switch":false,
+      "comment":"This is giving null pointer exception."
+    },{
+      "name":"setLayoutParams",
+      "params":["layoutParams"],
+      "arguments":[{"name":"layoutParamsWidthHeightPixel", "values":["500","500"]}],
+      "switch":false
+    },{
+      "name":"setHeight",
+      "params":["int"],
+      "arguments":[{"name":"percentageHeight", "values":["30"]}],
+      "switch":false
+    },{
+      "name":"setBackgroundResource",
+      "params":["int"],
+      "arguments":[{"name":"resourceId", "values":["gravity", "mipmap"]}],
+      "switch":true
+    },{
+      "name":"setWidth",
+      "params":["int"],
+      "arguments":[{"name":"percentageWidth", "values":["50"]}],
+      "switch":true
+    },{
+      "name":"setLayoutParams",
+      "params":["layoutParams"],
+      "arguments":[{"name":"layoutParamsWidthHeightPercentage", "values":["40","10"]}],
+      "switch":true,
+      "comment":"Height is increasing in relation with width."
+    }]
+  },
+  {
+    "tags": ["log2"],
+     "methods" : [
        {
-       	"method":"setBackgroundResource",
-       	"params":["int"],
-       	"value": ["ic_launcher_round", "mipmap", "com.dgp52.bindjson2view"],
-       	"convert":"resource"
+        "name":"setWidth",
+        "params":["int"],
+        "arguments":[{ "values": ["200"], "name":"int"}],
+        "switch":true
+       },
+       {
+        "name":"setHeight",
+        "params":["int"],
+        "arguments":[{ "values": ["200"], "name":"int"}],
+        "switch":true
+       },
+       {
+        "name":"setBackgroundColor",
+        "params":["int"],
+        "arguments":[{ "values": ["olive"], "name":"parseColor"}],
+        "switch":true
        }
      ]
    }
  ]
 }
+
+
 
   params = should be able to handle multiple parameters.
   value = should be able to handle multiple values. Params and values should be in correct order.
@@ -56,3 +117,96 @@ dependencies {
 }
 
 Step 3. Migrate Android Project to AndroidX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+"binders": [
+  {
+    "tags": ["log2"],
+     "methods" : [
+       {
+        "name":"setBackgroundResource",
+        "params":["int"],
+        "arguments":[{ "values": ["gravity", "mipmap"], "name":"drawable"},
+          {"values": ["lala"], "name":"bufferType"}]
+       }
+     ]
+   },
+   {
+    "tags": ["log0"],
+     "methods" : [
+       {
+        "name":"setBackgroundColor",
+        "params":["int"],
+        "values": ["4286f4"],
+        "converts":["color"],
+        "unit":"hex"
+       }
+     ]
+   },
+   {
+    "tags": ["log2"],
+     "methods" : [
+       {
+        "name":"setLayoutParams",
+        "params":["layoutParams"],
+        "values": ["600", "600"],
+        "converts":["layoutParamsWidthHeight"],
+        "unit":"pixel",
+        "switch": false
+       },
+       {
+        "name":"setText",
+        "params":["charSequence"],
+        "values": ["Position"],
+        "converts":["string"],
+        "switch":"off"
+       }
+     ]
+   },
+   {
+    "tags": ["log2432"],
+     "methods" : [
+       {
+        "name":"setVisibility",
+        "params":["int"],
+        "values": ["0"],
+        "converts":["int"]
+       },
+       {
+        "name":"setWidth",
+        "params":["int"],
+        "values": ["50"],
+        "converts":["width"],
+        "unit":"percentage"
+       }
+     ]
+   },
+   {
+    "tags": ["log4234"],
+     "methods" : [
+       {
+        "name":"setLayoutParams",
+        "params":["layoutParams"],
+        "values": ["500", "500"],
+        "converts":["layoutParamsWidthHeight"],
+        "unit":"pixel"
+       }
+     ]
+   }
+ ]
+}
