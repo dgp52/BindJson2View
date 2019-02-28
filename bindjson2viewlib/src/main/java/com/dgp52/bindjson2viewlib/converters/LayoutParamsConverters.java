@@ -27,8 +27,8 @@ public enum LayoutParamsConverters implements ArgumentFunction {
             if(values==null || values.isEmpty() || wk.get()==null)
                 return null;
             ArrayList<Object> objects = new ArrayList<>();
-            values.add(0, IntConverters.PERCENTAGEWIDTH.apply(values,wk).get(0).toString());
-            values.add(1, IntConverters.PERCENTAGEHEIGHT.apply(values,wk).get(1).toString());
+            values.set(0, IntConverters.PERCENTAGEWIDTH.apply(values,wk).get(0).toString());
+            values.set(1, IntConverters.PERCENTAGEHEIGHT.apply(values,wk).get(1).toString());
             setWidthHeight(values,wk);
             objects.add(wk.get().getLayoutParams());
             return objects;
